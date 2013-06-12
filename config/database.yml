@@ -1,0 +1,18 @@
+development: &development
+  adapter: postgresql
+  encoding: unicode
+  database: test_project_two_dev
+  pool: 5
+  username: msundukov
+
+test:
+  <<: *development
+  database: test_project_two_test
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: test_project_two
+  username: username
+  password: password
+  host: host

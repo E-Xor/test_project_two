@@ -1,0 +1,16 @@
+== Test Project Two
+
+It's time to move on an create a new app to make experimantations.
+
+== Install
+
+Bundle install
+
+    bundle install
+
+Edit config/database.yml
+
+Create DB tables
+
+    bundle exec rake db:create
+
