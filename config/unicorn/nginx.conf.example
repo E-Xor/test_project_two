@@ -1,0 +1,45 @@
+worker_processes  2;
+error_log  /var/log/nginx_error.log;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+
+    upstream test_project_two_server {
+      server unix:/tmp/unicorn_test_project_two.sock fail_timeout=0;
+    }
+
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+      listen 80;
+      client_max_body_size 4G;
+      server_name testprojecttwo.dev; # Change /etc/hosts appropriately
+      keepalive_timeout 5;
+      root /Users/msundukov/test_project_two/public; # Change here
+      try_files $uri @app;
+
+      location @app {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://test_project_two_server;
+        proxy_buffer_size   128k;
+        proxy_buffers   4 256k;
+        proxy_busy_buffers_size   256k;
+      }
+
+      # Rails error pages
+      error_page 500 502 503 504 /500.html;
+      location = /500.html {
+        root /Users/msundukov/test_project_two/public; # Change here
+      }
+    }
+
+}
+

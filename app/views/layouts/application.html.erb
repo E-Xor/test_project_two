@@ -8,7 +8,23 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="header">&lt;Header&gt;</div>
+
+<div id="nav-and-content">
+  <div id="left-nav">
+    &lt;Menu&gt;
+    <div class="menu-item" id="frogs">
+      <%= link_to "Frogs", frogs_url  %>
+    </div>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
+
+<footer>
+  &lt;Footer&gt;
+</footer>
 
 </body>
 </html>
