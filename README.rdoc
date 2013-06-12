@@ -8,7 +8,7 @@ Bundle install.
 
     bundle install
 
-Edit `config/database.yml`.
+Edit "config/database.yml".
 
 Create DB tables.
 
