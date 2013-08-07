@@ -13,11 +13,10 @@
 <div id="nav-and-content">
   <div id="left-nav">
     &lt;Menu&gt;
-    <div class="menu-item" id="frogs">
-      <%= link_to "Frogs", frogs_url  %>
-    </div>
+    <%= render 'shared/menu' %>
   </div>
   <div id="content">
+    &lt;Content&gt;<br/>
     <%= yield %>
   </div>
 </div>

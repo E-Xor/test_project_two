@@ -32,7 +32,7 @@ body {
 }
 
 #left-nav {
-  background: #DDDDDD;
+  background: #F7F7F7;
   left: 0;
   top: 100px;
   float: left;
@@ -58,7 +58,7 @@ body {
 }
 
 footer {
-  background: #CCCCCC;
+  background: #EEEEEE;
   clear: both;
   position: realtive;
   bottom: 0;

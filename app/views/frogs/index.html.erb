@@ -1,0 +1,16 @@
+<div id="app">
+  If you see this that means Backbone doesn't work
+</div>
+<%= @frogs %>
+<script type="text/javascript">
+  $(function(){ // That's the same as '$(document).ready'
+                // or jQuery(document).ready.
+                // It executes when HTML-Document is loaded and DOM is ready
+                // $(window).load executes when complete page is fully loaded,
+                // including all frames, objects and images
+
+    window.router = new App.Routers.FrogRouter();
+    Backbone.history.start();
+  });
+
+</script>
