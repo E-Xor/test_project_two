@@ -1,7 +1,15 @@
-<div id="app">
-  If you see this that means Backbone doesn't work
-</div>
-<%= @frogs %>
+<table id="frogs_table" class="fancy_table">
+  <thead>
+    <tr>
+      <th>ID</tdh>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+
+  <tbody></tbody>
+</table>
+
 <script type="text/javascript">
   $(function(){ // That's the same as '$(document).ready'
                 // or jQuery(document).ready.
@@ -12,5 +20,8 @@
     window.router = new App.Routers.FrogRouter();
     Backbone.history.start();
   });
+</script>
 
+<script type="text/html" id="frog_row">
+  <%= render :partial => 'frogs/templates/frog_row' %>
 </script>

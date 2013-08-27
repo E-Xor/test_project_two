@@ -1,0 +1,16 @@
+.fancy_table {
+  border-collapse: collapse;
+}
+
+.fancy_table td, .fancy_table th {
+  border-right: dotted 1px #ababab;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #cdcdcd;
+  padding: 0 10px 0 10px;
+  vertical-align: middle;
+}
+
+.fancy_table td {
+  background-color: #eee;
+  cursor: pointer;
+}

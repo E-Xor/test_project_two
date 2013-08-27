@@ -4,5 +4,8 @@
 //=require lib/mustache
 //=require lib/backbone
 //=require backbone/app
+//=require backbone/models/frog_model
+//=require backbone/collections/frogs_collection
 //=require backbone/routers/frog_router
-//=require backbone/views/frogs
+//=require backbone/views/frog_view
+//=require backbone/views/frogs_view

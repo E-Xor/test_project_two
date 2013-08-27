@@ -14,16 +14,14 @@ body {
   width: 100%; 
   top: 0;
   left: 0;
-  background: #EEEEEE;
+  background: #F7F7F7;
 
   border-bottom: 1px solid #acacac;
-  opacity:0.50;
-  filter:alpha(opacity=50); /* For IE8 and earlier */
 }
 
 #nav-and-content {
   position: relative;
-  background: #BBBBBB;
+  background: #F7F7F7;
   width: 1000px;
   margin: 0 auto;
   height: 100%;
@@ -58,7 +56,7 @@ body {
 }
 
 footer {
-  background: #EEEEEE;
+  background: #F7F7F7;
   clear: both;
   position: realtive;
   bottom: 0;
@@ -67,6 +65,10 @@ footer {
   left: 0;
 
   border-top: 1px solid #acacac;
-  opacity:0.50;
-  filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.place {
+  color: #bbb;
+  display: block;
+  margin-bottom: 10px;
 }
