@@ -1,6 +1,5 @@
 class FrogsController < ApplicationController
   def main
-    @frogs = Frog.all # Debug
     render 'frogs/index' # Explicitly render a template,
                          # actual data loading will happen from Backbone using CRUD methods below
   end
@@ -18,7 +17,16 @@ class FrogsController < ApplicationController
   end
 
   def update
-    Rails.logger.debug "FrogsController::update. Params: #{params.inspect}"
+    begin
+      frog = Frog.find(params[:id])
+      frog.update_attributes(params[:frog])
+
+      render :json => frog.to_json
+    rescue => e
+      Rails.logger.error "Error happened: #{e.inspect}"
+      Rails.logger.debug e.backtrace.join("\n\t")
+      render :json => {error: e.inspect}, :status => :unprocessable_entity
+    end
   end
 
   def destroy

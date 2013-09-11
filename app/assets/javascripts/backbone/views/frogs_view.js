@@ -1,28 +1,45 @@
 $(function(){ // This runs when document ready
               // so we don't have to call new somwhere else
   App.Views.FrogsView = Backbone.View.extend({
-    el: '#frogs_table',
+    el: '#frog_app',
 
-    events: {},
+    template: $('#frogs_template').html(),
+
+    events: {
+      "click tr.clickable_row": "renderFrogView",
+      "click #create_frog": "createNewFrog"
+    },
 
     initialize: function() {
+      App.Views.FrogsView.__super__.initialize.apply(this, arguments);
       _.bindAll(this);
-      this.collection = new App.Collections.FrogsCollection();
-      this.collection.fetch();
-      this.listenTo(this.collection,'sync', this.render);
+      this.collection = this.options.collection;
+      this.listenTo(this.collection, "sync", this.render);
     },
 
     render: function() {
-      var self = this;
+      this.$el.html(this.template);
 
       this.collection.each(function(model){
-        self.$el.append(new App.Views.FrogView({model: model}).render());
+        $('#frogs_table').append(new App.Views.FrogItemView({model: model}).render());
       });
 
       return this;
+    },
+
+    renderFrogView: function(event) {
+      event.preventDefault();
+      event.stopPropagation();  
+      var frogId = $(event.target).parent().attr('frog-id');
+      Backbone.history.navigate('#frogs/'+ frogId, true);
+    },
+
+    createNewFrog: function(event) {
+      event.preventDefault();
+      event.stopPropagation();  
+      Backbone.history.navigate('#frogs/new', true);
     }
 
   });
 
-  var frogsView = new App.Views.FrogsView();
 });

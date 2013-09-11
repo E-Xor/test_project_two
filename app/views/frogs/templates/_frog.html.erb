@@ -1,0 +1,19 @@
+<div id="frog_form">
+  {{#edit}}
+
+    <button id="save_edit_frog_form" class="edit_button">Save</button>
+    <button id="cancel_edit_frog_form" class="edit_button">Cancel</button>
+    <div class="frog_property">Name: <input type="text" id="name" value="{{name}}"/></div>
+    <div class="frog_property">Age: <input type="text" id="age" value="{{age}}"/></div> <!-- number only -->
+
+  {{/edit}}
+  {{^edit}}
+
+    <button id="edit_frog_form" class="edit_button">Edit</button>
+    <div class="frog_property">Name: {{name}}</div>
+    <div class="frog_property">Age: {{age}}</div>
+   
+  {{/edit}}
+
+  <%= render :partial => 'frogs/templates/throbber' %>
+</div>

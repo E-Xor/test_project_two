@@ -1,14 +1,6 @@
-<table id="frogs_table" class="fancy_table">
-  <thead>
-    <tr>
-      <th>ID</tdh>
-      <th>Name</th>
-      <th>Age</th>
-    </tr>
-  </thead>
+<div id='frog_app'>
 
-  <tbody></tbody>
-</table>
+</div>
 
 <script type="text/javascript">
   $(function(){ // That's the same as '$(document).ready'
@@ -22,6 +14,12 @@
   });
 </script>
 
-<script type="text/html" id="frog_row">
+<script type="text/html" id="frog_row_template">
   <%= render :partial => 'frogs/templates/frog_row' %>
+</script>
+<script type="text/html" id="frog_form_template">
+  <%= render :partial => 'frogs/templates/frog' %>
+</script>
+<script type="text/html" id="frogs_template">
+  <%= render :partial => 'frogs/templates/frogs' %>
 </script>
