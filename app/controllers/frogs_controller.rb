@@ -13,7 +13,15 @@ class FrogsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "FrogsController::create. Params: #{params.inspect}"
+    begin
+      frog = Frog.create!(params[:frog])
+
+      render :json => frog.to_json
+    rescue => e
+      Rails.logger.error "Error happened: #{e.inspect}"
+      Rails.logger.debug e.backtrace.join("\n\t")
+      render :json => {error: e.inspect}, :status => :unprocessable_entity
+    end
   end
 
   def update
@@ -30,6 +38,15 @@ class FrogsController < ApplicationController
   end
 
   def destroy
-    Rails.logger.debug "FrogsController::destroy. Params: #{params.inspect}"
+    begin
+      frog = Frog.find(params[:id])
+      frog.destroy
+
+      render :json => frog.to_json
+    rescue => e
+      Rails.logger.error "Error happened: #{e.inspect}"
+      Rails.logger.debug e.backtrace.join("\n\t")
+      render :json => {error: e.inspect}, :status => :unprocessable_entity
+    end
   end
 end

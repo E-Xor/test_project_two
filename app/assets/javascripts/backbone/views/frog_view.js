@@ -6,28 +6,29 @@ $(function(){ // This runs when document ready
     template: $('#frog_form_template').html(),
 
     events: {
-      "click #edit_frog_form": 'toggleEditFrog',
-      'click #cancel_edit_frog_form': 'toggleEditFrog',
-      'click button#save_edit_frog_form': 'saveFrog'
+      "click #edit_frog_form": 'toggleEditFrogEventHandler',
+      'click #cancel_edit_frog_form': 'toggleEditFrogEventHandler',
+      'click #save_edit_frog_form': 'saveFrog',
+      'click #delete_frog_form': 'deleteFrog'
     },
 
     initialize: function(options) {
-      //App.Views.FrogView.__super__.initialize.apply(this, arguments);
+      App.Views.FrogView.__super__.initialize.apply(this, arguments);
       _.bindAll(this);
 
       this.collection = this.options.collection;
       this.frogId = this.options.frogId;
-      this.options.edit ? this.edit = this.options.edit : this.edit = false;
+      if(this.options.edit) { this.edit = this.options.edit; } else { this.edit = false; }
       this.listenTo(this.collection,'sync', this.render);
     },
 
     render: function() {
       var attributes;
 
-      if(this.frogId == 'new') {
+      if(!this.frogId) {
 
         this.edit = true;
-        this.newFrogModel = new App.Models.FrogModel;
+        this.newFrogModel = new App.Models.FrogModel();
         this.newFrogModel.set({
             'name':'',
             'age': ''
@@ -39,7 +40,9 @@ $(function(){ // This runs when document ready
       }
       else {
 
-        attributes = this.collection.get(this.frogId).attributes;
+        var modelForRender = this.collection.get(this.frogId);
+        if(!modelForRender){ return this; }
+        attributes = modelForRender.attributes;
 
       }
       _.extend(attributes, {edit: this.edit});
@@ -54,11 +57,11 @@ $(function(){ // This runs when document ready
       e.preventDefault();
       e.stopPropagation();
       this.toggleEditFrog();
+      this.render();
     },
 
     toggleEditFrog: function() {
       this.edit = !this.edit;
-      this.render();
       var edit_path = '';
       if(this.edit) {
         edit_path = '/edit';
@@ -66,16 +69,31 @@ $(function(){ // This runs when document ready
       Backbone.history.navigate('#frogs/'+ this.frogId + edit_path, false);
     },
 
-    saveFrog: function(e) {
-      this.$el.find('#throbber').show();
-
-      if(this.frogId == 'new') {
-        var modelForUpdate = this.newFrogModel;
+    handleError: function(model, response, options){
+      this.$el.find('#throbber').fadeOut(2000);
+      var errorMessage = response.responseJSON.error.replace(/[&<>"'\/#]/g,'');
+      if($('.error').length){
+        $('.error').text(errorMessage);
       }
       else {
-        var modelForUpdate = this.collection.get(this.frogId);
+        this.$el.append('<div class="error">' +  errorMessage + '</div>');
+      }
+    },
+
+    saveFrog: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.$el.find('#throbber').show();
+      var modelForUpdate;
+
+      if(!this.frogId) {
+        modelForUpdate = this.newFrogModel;
+      }
+      else {
+        modelForUpdate = this.collection.get(this.frogId);
       }
 
+      if(!modelForUpdate){ return this; }
       modelForUpdate.set({
           'name': this.$el.find('#name').val(),
           'age': this.$el.find('#age').val(),
@@ -85,26 +103,59 @@ $(function(){ // This runs when document ready
       );
 
       self = this;
-      modelForUpdate.save(
-        modelForUpdate.toJSON(),
-        {
-          success: function(model, response, options){
-            self.$el.find('#throbber').hide();
-            self.toggleEditFrog();
-          },
-          error: function(model, response, options){
-            self.$el.find('#throbber').fadeOut(2000);
-            var errorMessage = response.responseJSON.error.replace(/[&<>"'\/#]/g,'');
-            if($('.error').length){
-              $('.error').text(errorMessage);
-            }
-            else {
-              self.$el.append('<div class="error">' +  errorMessage + '</div>');
-            }
-          },
-          wait: true 
-        }
-      );
+
+      if(!this.frogId) {
+        this.collection.create(
+          modelForUpdate.toJSON(),
+          {
+            success: function(model, response, options){
+              self.$el.find('#throbber').hide();
+              self.frogId = response.id;
+              self.toggleEditFrog();
+            },
+            error: self.handleError,
+            wait: true 
+          }
+        );
+      }
+      else {
+        modelForUpdate.save(
+          modelForUpdate.toJSON(),
+          {
+            success: function(model, response, options){
+              self.$el.find('#throbber').hide();
+              self.toggleEditFrog();
+            },
+            error: self.handleError,
+            wait: true 
+          }
+
+        );
+      }
+    },
+
+    deleteFrog: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var modelForDeletion = this.collection.get(this.frogId);
+
+      if(!modelForDeletion) { return this; }
+      if(confirm("You're about to delete a frog "+ modelForDeletion.get('name') + ' ' + this.frogId +". That can't be undone.")) {
+        self = this;
+        modelForDeletion.destroy(
+          {
+            success: function(model, response, options){
+              self.$el.find('#throbber').hide();
+              this.frogId = undefined;
+              Backbone.history.navigate('', true);
+            },
+            error: self.handleError,
+            wait: true 
+          }
+
+        );
+      }
     }
 
   });
