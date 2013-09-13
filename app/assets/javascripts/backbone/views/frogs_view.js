@@ -1,7 +1,7 @@
 $(function(){ // This runs when document ready
               // so we don't have to call new somwhere else
   App.Views.FrogsView = Backbone.View.extend({
-    el: '#frog_app',
+    id: 'frog_index',
 
     template: $('#frogs_template').html(),
 

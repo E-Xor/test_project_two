@@ -1,7 +1,7 @@
 $(function(){ // This runs when document ready
               // so we don't have to call new somwhere else
   App.Views.FrogView = Backbone.View.extend({
-    el: '#frog_app',
+    id: 'frog_details',
 
     template: $('#frog_form_template').html(),
 
@@ -39,12 +39,9 @@ $(function(){ // This runs when document ready
 
       }
       else {
-
-        var modelForRender = this.collection.get(this.frogId);
-        if(!modelForRender){ return this; }
-        attributes = modelForRender.attributes;
-
+        attributes = this.collection.get(this.frogId).attributes;
       }
+
       _.extend(attributes, {edit: this.edit});
 
       var m = Mustache.render(this.template, attributes);
@@ -93,7 +90,6 @@ $(function(){ // This runs when document ready
         modelForUpdate = this.collection.get(this.frogId);
       }
 
-      if(!modelForUpdate){ return this; }
       modelForUpdate.set({
           'name': this.$el.find('#name').val(),
           'age': this.$el.find('#age').val(),
@@ -140,15 +136,13 @@ $(function(){ // This runs when document ready
 
       var modelForDeletion = this.collection.get(this.frogId);
 
-      if(!modelForDeletion) { return this; }
       if(confirm("You're about to delete a frog "+ modelForDeletion.get('name') + ' ' + this.frogId +". That can't be undone.")) {
         self = this;
         modelForDeletion.destroy(
           {
             success: function(model, response, options){
               self.$el.find('#throbber').hide();
-              this.frogId = undefined;
-              Backbone.history.navigate('', true);
+              Backbone.history.navigate('frogs', true);
             },
             error: self.handleError,
             wait: true 

@@ -2,6 +2,7 @@ $(function(){
   App.Routers.FrogRouter = Backbone.Router.extend({
     routes: {
       '': 'index',
+      'frogs': 'index',
       'frogs/new': 'frog_new',
       'frogs/:id': 'frog',
       'frogs/:id/edit': 'frog_edit'
@@ -12,7 +13,7 @@ $(function(){
         collection: this.getFrogsCollection()
       });
 
-      this.setAndRenderView(frogsView, true);
+      this.setAndRenderView(frogsView);
     },
 
     frog: function(id){
@@ -51,6 +52,7 @@ $(function(){
     },
 
     setAndRenderView: function(view, force) {
+      if(this.currentView) {this.currentView.remove();}
       this.currentView = view;
       $("#frog_app").html(this.currentView.$el);
       if((this.currentView.collection && !this.currentView.collection.fetched)||force) {
