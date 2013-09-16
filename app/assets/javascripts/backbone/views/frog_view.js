@@ -68,7 +68,9 @@ $(function(){ // This runs when document ready
 
     handleError: function(model, response, options){
       this.$el.find('#throbber').fadeOut(2000);
+
       var errorMessage = response.responseJSON.error.replace(/[&<>"'\/#]/g,'');
+
       if($('.error').length){
         $('.error').text(errorMessage);
       }
@@ -80,7 +82,7 @@ $(function(){ // This runs when document ready
     saveFrog: function(e) {
       e.preventDefault();
       e.stopPropagation();
-      this.$el.find('#throbber').show();
+
       var modelForUpdate;
 
       if(!this.frogId) {
@@ -98,35 +100,39 @@ $(function(){ // This runs when document ready
         {'silent': true} // Don't fire an event
       );
 
-      self = this;
+      if(modelForUpdate.isValid()) { // Explicitly validate
 
-      if(!this.frogId) {
-        this.collection.create(
-          modelForUpdate.toJSON(),
-          {
-            success: function(model, response, options){
-              self.$el.find('#throbber').hide();
-              self.frogId = response.id;
-              self.toggleEditFrog();
-            },
-            error: self.handleError,
-            wait: true 
-          }
-        );
-      }
-      else {
-        modelForUpdate.save(
-          modelForUpdate.toJSON(),
-          {
-            success: function(model, response, options){
-              self.$el.find('#throbber').hide();
-              self.toggleEditFrog();
-            },
-            error: self.handleError,
-            wait: true 
-          }
+        self = this;
+        this.$el.find('#throbber').show();
 
-        );
+        if(!this.frogId) {
+          this.collection.create(
+            modelForUpdate.toJSON(),
+            {
+              success: function(model, response, options){
+                self.$el.find('#throbber').hide();
+                self.frogId = response.id;
+                self.toggleEditFrog();
+              },
+              error: self.handleError,
+              wait: true 
+            }
+          );
+        }
+        else {
+          modelForUpdate.save(
+            modelForUpdate.toJSON(),
+            {
+              success: function(model, response, options){
+                self.$el.find('#throbber').hide();
+                self.toggleEditFrog();
+              },
+              error: self.handleError,
+              wait: true 
+            }
+
+          );
+        }
       }
     },
 

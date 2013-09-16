@@ -29,6 +29,11 @@
   margin-top: 5px;
 }
 
+label {
+  width: 75px;
+  float:  left;
+}
+
 #throbber {
   display: none;
   background-color: white;
@@ -51,4 +56,11 @@
 .error {
   color: red;
   margin: 20px;
+}
+
+.inline_error {
+  color: red;
+  line-height: 16px;
+  font-size: 14px;
+  padding: 5px;
 }
