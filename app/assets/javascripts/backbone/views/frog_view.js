@@ -7,7 +7,7 @@ $(function(){ // This runs when document ready
 
     events: {
       "click #edit_frog_form": 'toggleEditFrogEventHandler',
-      'click #cancel_edit_frog_form': 'toggleEditFrogEventHandler',
+      'click #cancel_edit_frog_form': 'cancelHandler',
       'click #save_edit_frog_form': 'saveFrog',
       'click #delete_frog_form': 'deleteFrog'
     },
@@ -155,6 +155,17 @@ $(function(){ // This runs when document ready
           }
 
         );
+      }
+    },
+
+    cancelHandler: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if(!this.frogId) {
+        Backbone.history.navigate('', true);
+      }
+      else {
+        this.toggleEditFrogEventHandler(e);
       }
     }
 
