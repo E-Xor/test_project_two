@@ -1,8 +1,8 @@
 <div id="frog_form">
   {{#edit}}
 
-    <button id="save_edit_frog_form" class="edit_button">Save</button>
-    <button id="cancel_edit_frog_form" class="edit_button">Cancel</button>
+    <button id="save_edit_frog_form" class="my_button">Save</button>
+    <button id="cancel_edit_frog_form" class="my_button">Cancel</button>
     <div class="frog_property" id="name_line">
       <label for="name">Name</label> 
       <input type="text" id="name" value="{{name}}" />
@@ -14,8 +14,8 @@
   {{/edit}}
   {{^edit}}
 
-    <button id="edit_frog_form" class="edit_button">Edit</button>
-    <button id="delete_frog_form" class="edit_button">Delete</button>
+    <button id="edit_frog_form" class="my_button">Edit</button>
+    <button id="delete_frog_form" class="my_button">Delete</button>
     <div class="frog_property">Name: {{name}}</div>
     <div class="frog_property">Age: {{age}}</div>
    

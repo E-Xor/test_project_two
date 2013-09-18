@@ -1,7 +1,38 @@
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-<div ng-app>
-  <label>Player Name:</label>
-  <input type="text" ng-model="yourName" placeholder="Enter a name here"/>
-  <hr>
-  <p>Hello famous basketball player {{yourName}}!</p>
+<div id="ng-app" ng-app>
+
+  <div id="baller_name">
+    <h4>Hi, player!</h4>
+    <label>Player Name:</label>
+    <input type="text" ng-model="yourName" placeholder="Enter a name here"/>
+    <p>Hello famous basketball player {{yourName}}!</p>
+  </div>
+
+  <hr/>
+
+  <div id="ballers_list">
+
+    <h4>List of awesome basketball players</h4>
+
+    <div ng-controller="PlayersCtrl">
+      <span>{{remaining()}} of {{players.length}} remaining</span>
+      [ <a href="" ng-click=delete() >delete</a> ]
+      <ul>
+        <li ng-repeat="player in players">
+          <input type="checkbox" ng-model="player.checked"/>
+          <span class="checked-{{player.checked}}">{{player.name}}</span>
+        </li>
+      </ul>
+
+      <form ng-submit="addPlayer()">
+        <input type="text" ng-model="playerName" size="30" placeholder="add player here" />
+        <input class="my_button" type="submit" value="Add" />
+      </form>
+
+    </div>
+  </div>
+
+  <hr/>
+
+  <%= render :partial => 'ballers/partials/players_with_details' %>
+
 </div>
