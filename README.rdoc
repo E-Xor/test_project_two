@@ -1,6 +1,6 @@
 == Test Project Two
 
-It's time to move on an create a new app to make experimantations.
+I'll keep here fresh demos and thing I learn.
 
 == Install
 
@@ -14,3 +14,6 @@ Create DB tables.
 
     bundle exec rake db:create
 
+Run migrations
+
+    bundle exec rake db:migrate
