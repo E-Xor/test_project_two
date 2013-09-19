@@ -1,6 +1,6 @@
 == Test Project Two
 
-I'll keep here fresh demos and thing I learn.
+I'll keep here fresh demos and things I learn.
 
 == Install
 
