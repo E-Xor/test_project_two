@@ -27,7 +27,8 @@ $(function(){
 
     frog_new: function(id) {
       var frogNewView = new App.Views.FrogView({
-        collection: this.getFrogsCollection()
+        collection: this.getFrogsCollection(),
+        edit: true
       });
 
       this.setAndRenderView(frogNewView);
@@ -62,6 +63,7 @@ $(function(){
       else {
         this.currentView.render();
       }
+      window.scrollTo(0);
     }
 
   });

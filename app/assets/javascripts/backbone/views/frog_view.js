@@ -18,16 +18,24 @@ $(function(){ // This runs when document ready
 
       this.collection = this.options.collection;
       this.frogId = this.options.frogId;
-      if(this.options.edit) { this.edit = this.options.edit; } else { this.edit = false; }
+
+      this.$el.addClass("flip-container");
+      if(this.options.edit) {
+        this.edit = this.options.edit;
+        this.$el.addClass("rotate");
+      } 
+      else {
+       this.edit = false;
+     }
+
       this.listenTo(this.collection,'sync', this.render);
     },
 
     render: function() {
       var attributes;
 
-      if(!this.frogId) {
-
-        this.edit = true;
+      if(!this.frogId && this.edit) {
+        
         this.newFrogModel = new App.Models.FrogModel();
         this.newFrogModel.set({
             'name':'',
@@ -42,8 +50,6 @@ $(function(){ // This runs when document ready
         attributes = this.collection.get(this.frogId).attributes;
       }
 
-      _.extend(attributes, {edit: this.edit});
-
       var m = Mustache.render(this.template, attributes);
       var el = this.$el.html(m);
 
@@ -54,10 +60,10 @@ $(function(){ // This runs when document ready
       e.preventDefault();
       e.stopPropagation();
       this.toggleEditFrog();
-      this.render();
     },
 
     toggleEditFrog: function() {
+      this.$el.toggleClass("rotate");
       this.edit = !this.edit;
       var edit_path = '';
       if(this.edit) {

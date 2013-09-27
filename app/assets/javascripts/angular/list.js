@@ -1,4 +1,5 @@
-var PlayersCtrl = ['$scope', function PlayersCtrl($scope) {
+var PlayersCtrl = ['$scope', '$http', function PlayersCtrl($scope, $http) {
+
   $scope.players = [
     {name:'Maksim First', checked:true},
     {name:'Maksim Second', checked:false}];
