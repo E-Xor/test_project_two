@@ -55,14 +55,14 @@ renderer.render(scene, camera);
 
 // Move light
 var change = 0;
-// window.setInterval(function(){
-//     change += 0.1;
-//     cube.rotation.x += 0.02;
-//     cube.rotation.y += 0.0225;
-//     cube.rotation.z += 0.0175;
-//     cube.scale.x  = 1.0 + 0.3*Math.sin(change);
-//     cube.scale.y  = 1.0 + 0.3*Math.sin(change);
-//     cube.scale.z  = 1.0 + 0.3*Math.sin(change);
+window.setInterval(function(){
+    change += 0.1;
+    cube.rotation.x += 0.02;
+    cube.rotation.y += 0.0225;
+    cube.rotation.z += 0.0175;
+    cube.scale.x  = 1.0 + 0.3*Math.sin(change);
+    cube.scale.y  = 1.0 + 0.3*Math.sin(change);
+    cube.scale.z  = 1.0 + 0.3*Math.sin(change);
     
-//     renderer.render(scene, camera);
-// },30);
+    renderer.render(scene, camera);
+},30);
