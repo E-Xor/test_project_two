@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TestProjectTwo</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>TestProjectTwo</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<div id="header"><span class="place">&lt;Header&gt;</span></div>
+  <header><span class="place">&lt;Header&gt;</span></header>
 
-<div id="nav-and-content">
-  <div id="left-nav">
-    <span class="place">&lt;Menu&gt;</span>
-    <%= render 'shared/menu' %>
+  <div id="nav-and-content">
+    <nav>
+      <span class="place">&lt;Menu&gt;</span>
+      <%= render 'shared/menu' %>
+    </nav>
+    <main>
+      <span class="place">&lt;Content&gt;</span>
+      <%= yield %>
+    </main>
   </div>
-  <div id="content">
-    <span class="place">&lt;Content&gt;</span>
-    <%= yield %>
-  </div>
-</div>
 
-<footer>
-  <span class="place">&lt;Footer&gt;</span>
-</footer>
+  <footer>
+    <span class="place">&lt;Footer&gt;</span>
+  </footer>
 
 </body>
 </html>

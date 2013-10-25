@@ -4,6 +4,7 @@
 //=require lib/mustache
 //=require lib/backbone
 //=require lib/angular
+//=require lib/three.js
 
 //=require backbone/app
 //=require backbone/models/frog_model
@@ -14,3 +15,6 @@
 //=require backbone/routers/frog_router
 
 //=require angular/list
+
+//=require three/cube
+

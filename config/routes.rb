@@ -6,4 +6,6 @@ TestProjectTwo::Application.routes.draw do
   root :to => 'frogs#main'
   get 'main' => 'frogs#main'
 
+  get 'cube' => 'cube#index'
+
 end
