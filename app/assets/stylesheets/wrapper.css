@@ -73,24 +73,18 @@ footer {
 
 ul.menu {
     list-style-type: none;
-    padding-left: 10px;
 }
 
 ul.menu > li {
-    /*border: 1px solid black;*/
-    /*padding: 10px 0 10px 0;*/
-    margin-left: 20px;
+    margin-left: -10px;
 }
 
-ul.menu > li > a {
+.menu a {
     padding: 10px 0 10px 30px;
     margin-left: -30px;
     border: 1px dotted black;
     width: 148px;
     display: inline-block;
-}
-
-.menu a {
     text-decoration: none;
     color: SaddleBrown;
     position: relative;
