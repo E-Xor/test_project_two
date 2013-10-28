@@ -4,7 +4,7 @@
 //=require lib/mustache
 //=require lib/backbone
 //=require lib/angular
-//=require lib/three.js
+//=require lib/three
 
 //=require backbone/app
 //=require backbone/models/frog_model
