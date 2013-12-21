@@ -73,7 +73,7 @@ $(function(){ // This runs when document ready
     },
 
     handleError: function(model, response, options){
-      this.$el.find('#throbber').fadeOut(2000);
+// Helper      this.$el.find('#throbber').fadeOut(2000);
 
       var errorMessage = response.responseJSON.error.replace(/[&<>"'\/#]/g,'');
 
@@ -109,14 +109,20 @@ $(function(){ // This runs when document ready
       if(modelForUpdate.isValid()) { // Explicitly validate
 
         self = this;
-        this.$el.find('#throbber').show();
+        /* this.$el.find('#throbber').show();
+        Create helper that replaces button with &nbsp, get it's width and applies background:
+          background-image: url('/assets/throbber.gif');
+          background-repeat: no-repeat;
+          width: 50px;
+          margin: auto 0;
+          background-position: 15px 5px; */
 
         if(!this.frogId) {
           this.collection.create(
             modelForUpdate.toJSON(),
             {
               success: function(model, response, options){
-                self.$el.find('#throbber').hide();
+// Helper                self.$el.find('#throbber').hide();
                 self.frogId = response.id;
                 self.toggleEditFrog();
               },
@@ -130,7 +136,7 @@ $(function(){ // This runs when document ready
             modelForUpdate.toJSON(),
             {
               success: function(model, response, options){
-                self.$el.find('#throbber').hide();
+// Helper                self.$el.find('#throbber').hide();
                 self.toggleEditFrog();
               },
               error: self.handleError,
@@ -153,7 +159,7 @@ $(function(){ // This runs when document ready
         modelForDeletion.destroy(
           {
             success: function(model, response, options){
-              self.$el.find('#throbber').hide();
+// Helper              self.$el.find('#throbber').hide();
               Backbone.history.navigate('frogs', true);
             },
             error: self.handleError,

@@ -15,7 +15,7 @@ $(function(){
         $('#name_line').append('<span class="inline_error">'+msg+'</span>');
         return msg;
       }
-      if (!attrs.age || attrs.age <= 0 || attrs.age >= 100) {
+      if (!attrs.age || isNaN(parseInt(attrs.age, 10)) || attrs.age <= 0 || attrs.age >= 100) {
         msg = 'Age should be between 0 and 100';
         $('#age_line').append('<span class="inline_error">'+msg+'</span>');
         return msg;

@@ -14,26 +14,28 @@ class FrogsController < ApplicationController
 
   def create
     begin
+      # sleep 50000
+      # fail "Test"
       frog = Frog.create!(params[:frog])
 
       render :json => frog.to_json
     rescue => e
       Rails.logger.error "Error happened: #{e.inspect}"
       Rails.logger.debug e.backtrace.join("\n\t")
-      render :json => {error: e.inspect}, :status => :unprocessable_entity
+      render :json => {error: "Error happened saving a frog"}, :status => :unprocessable_entity
     end
   end
 
   def update
     begin
       frog = Frog.find(params[:id])
-      frog.update_attributes(params[:frog])
+      frog.update_attributes!(params[:frog])
 
       render :json => frog.to_json
     rescue => e
       Rails.logger.error "Error happened: #{e.inspect}"
       Rails.logger.debug e.backtrace.join("\n\t")
-      render :json => {error: e.inspect}, :status => :unprocessable_entity
+      render :json => {error: "Error happened updating a frog"}, :status => :unprocessable_entity
     end
   end
 
@@ -46,7 +48,7 @@ class FrogsController < ApplicationController
     rescue => e
       Rails.logger.error "Error happened: #{e.inspect}"
       Rails.logger.debug e.backtrace.join("\n\t")
-      render :json => {error: e.inspect}, :status => :unprocessable_entity
+      render :json => {error: "Error happened destroying a frog"}, :status => :unprocessable_entity
     end
   end
 end
