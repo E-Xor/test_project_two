@@ -73,8 +73,6 @@ $(function(){ // This runs when document ready
     },
 
     handleError: function(model, response, options){
-// Helper      this.$el.find('#throbber').fadeOut(2000);
-
       var errorMessage = response.responseJSON.error.replace(/[&<>"'\/#]/g,'');
 
       if($('.error').length){
@@ -109,24 +107,21 @@ $(function(){ // This runs when document ready
       if(modelForUpdate.isValid()) { // Explicitly validate
 
         self = this;
-        /* this.$el.find('#throbber').show();
-        Create helper that replaces button with &nbsp, get it's width and applies background:
-          background-image: url('/assets/throbber.gif');
-          background-repeat: no-repeat;
-          width: 50px;
-          margin: auto 0;
-          background-position: 15px 5px; */
+        var originalText = this.startThrobber($(e.target));
 
         if(!this.frogId) {
           this.collection.create(
             modelForUpdate.toJSON(),
             {
               success: function(model, response, options){
-// Helper                self.$el.find('#throbber').hide();
+                self.stopThrobber($(e.target), originalText);
                 self.frogId = response.id;
                 self.toggleEditFrog();
               },
-              error: self.handleError,
+              error: function(model, response, options){
+                self.stopThrobber($(e.target), originalText);
+                self.handleError(model, response, options);
+              },
               wait: true 
             }
           );
@@ -136,10 +131,13 @@ $(function(){ // This runs when document ready
             modelForUpdate.toJSON(),
             {
               success: function(model, response, options){
-// Helper                self.$el.find('#throbber').hide();
+                self.stopThrobber($(e.target), originalText);
                 self.toggleEditFrog();
               },
-              error: self.handleError,
+              error: function(model, response, options){
+                self.stopThrobber($(e.target), originalText);
+                self.handleError(model, response, options);
+              },
               wait: true 
             }
 
@@ -154,15 +152,21 @@ $(function(){ // This runs when document ready
 
       var modelForDeletion = this.collection.get(this.frogId);
 
+      var originalText = this.startThrobber($(e.target));
+
+      // Make a custom modal window <--
       if(confirm("You're about to delete a frog "+ modelForDeletion.get('name') + ' ' + this.frogId +". That can't be undone.")) {
         self = this;
         modelForDeletion.destroy(
           {
             success: function(model, response, options){
-// Helper              self.$el.find('#throbber').hide();
+              self.stopThrobber($(e.target), originalText);
               Backbone.history.navigate('frogs', true);
             },
-            error: self.handleError,
+            error: function(model, response, options){
+              self.stopThrobber($(e.target), originalText);
+              self.handleError(model, response, options);
+            },
             wait: true 
           }
 
@@ -179,6 +183,28 @@ $(function(){ // This runs when document ready
       else {
         this.toggleEditFrogEventHandler(e);
       }
+    },
+
+    startThrobber: function($el){ // Move to a separate lib
+      var originalText = $el.text();
+      $el.addClass('throbberBtn');
+
+      var originaWidth = $el.outerWidth(); 
+      var bgPositionX = $el.outerWidth()/2 - 9 + 'px';
+      var bgPositionY = $el.outerHeight()/2 - 9 + 'px';
+
+      $el.html('&nbsp;');
+      $el.css({
+          'width': originaWidth + 'px',
+          'background-position': bgPositionX + ' ' + bgPositionY
+      });
+
+      return originalText;
+    },
+
+    stopThrobber: function($el, originalText){ // Move to a separate lib
+        $el.removeClass('throbberBtn');
+        $el.text(originalText);
     }
 
   });

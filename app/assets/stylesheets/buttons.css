@@ -1,7 +1,17 @@
 .my_button {
-  border: 1px solid;
-  border-radius: 3px;
-  background-color: transparent;
-  font-size: 16px;
-  margin: 10px 10px 10px 0px;
+    padding: 6px 12px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+    margin: 10px 10px 10px 0px;
+}
+
+.throbberBtn {
+    background-image: url('/assets/throbber.gif');
+    background-repeat: no-repeat;
 }

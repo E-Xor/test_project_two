@@ -14,8 +14,6 @@ class FrogsController < ApplicationController
 
   def create
     begin
-      # sleep 50000
-      # fail "Test"
       frog = Frog.create!(params[:frog])
 
       render :json => frog.to_json

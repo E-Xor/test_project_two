@@ -1,3 +1,10 @@
 <h4>Basketball players with details</h4>
 
-<%= render :partial => 'ballers/partials/player_details' %>
+<p>[Create form with save and reset]</p>
+
+<p>[Table with Sort, Serach]</p>
+<% @players.each do |player| %>
+
+  <%= player[:first_name] %>&nbsp;<%= player[:last_name] %> [Details/Edit on Click]<br/>  
+
+<% end %>

@@ -1,12 +1,10 @@
 class BallersController < ApplicationController
-  def main
-    render 'frogs/index' # Explicitly render a template,
-                         # actual data loading will happen from Backbone using CRUD methods below
-  end
-
   def index
     Rails.logger.debug "BallersController::index. Params: #{params.inspect}"
-    render 'ballers/index'
+    @players = [
+      {first_name: 'LeBron', last_name: 'James', position: 'SG/SF'},
+      {first_name: 'Kevin', last_name: 'Durant', position: 'SF'}
+    ]
   end
 
   def show
