@@ -3,7 +3,8 @@
 //=require lib/underscore
 //=require lib/mustache
 //=require lib/backbone
-//=require lib/angular
+//=require lib/angular.min
+//=require lib/angular-resource.min
 //=require lib/three
 
 //=require backbone/app
@@ -14,7 +15,8 @@
 //=require backbone/views/frogs_view
 //=require backbone/routers/frog_router
 
-//=require angular/list
+//=require angular/app
+//=require angular/services/ballers_srv
+//=require angular/controllers/ballers_ctrl
 
 //=require three/cube
-

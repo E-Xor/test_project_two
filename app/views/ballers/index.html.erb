@@ -1,38 +1,15 @@
-<div id="ng-app" ng-app>
+<div id="ballers-ng-app" ng-app="NgBallers">
 
-  <div id="baller_name">
-    <h4>Hi, player!</h4>
-    <label>Player Name:</label>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here"/>
-    <p>Hello famous basketball player {{yourName}}!</p>
+  <h4>Basketball players with details</h4>
+  <div ng-controller="BallersCtrl">
+    <p>[Create form with save and reset]</p>
+
+    <p>[Table with Sort, Serach]</p>
+    <ul>
+      <li ng-repeat="player in players">
+        {{player.first_name}}&nbsp;{{player.last_name}} [Details/Edit on Click]
+      </li>
+    </ul>
   </div>
-
-  <hr/>
-
-  <div id="ballers_list">
-
-    <h4>List of awesome basketball players</h4>
-
-    <div ng-controller="PlayersCtrl">
-      <span>{{remaining()}} of {{players.length}} remaining</span>
-      [ <a href="" ng-click=delete() >delete</a> ]
-      <ul>
-        <li ng-repeat="player in players">
-          <input type="checkbox" ng-model="player.checked"/>
-          <span class="checked-{{player.checked}}">{{player.name}}</span>
-        </li>
-      </ul>
-
-      <form ng-submit="addPlayer()">
-        <input type="text" ng-model="playerName" size="30" placeholder="add player here" />
-        <input class="my_button" type="submit" value="Add" />
-      </form>
-
-    </div>
-  </div>
-
-  <hr/>
-
-  <%= render :partial => 'ballers/partials/players_with_details' %>
 
 </div>

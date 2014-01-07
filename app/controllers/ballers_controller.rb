@@ -1,7 +1,11 @@
 class BallersController < ApplicationController
+
+  def main
+    render 'index'
+  end
+
   def index
-    Rails.logger.debug "BallersController::index. Params: #{params.inspect}"
-    @players = [
+    render json: [
       {first_name: 'LeBron', last_name: 'James', position: 'SG/SF'},
       {first_name: 'Kevin', last_name: 'Durant', position: 'SF'}
     ]
@@ -22,4 +26,5 @@ class BallersController < ApplicationController
   def destroy
     Rails.logger.debug "BallersController::destroy. Params: #{params.inspect}"
   end
+
 end
