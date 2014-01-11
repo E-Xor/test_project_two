@@ -1,15 +1,30 @@
-<div id="ballers-ng-app" ng-app="NgBallers">
+<div id="ballersNgApp" ng-app="NgBallers">
 
   <h4>Basketball players with details</h4>
   <div ng-controller="BallersCtrl">
     <p>[Create form with save and reset]</p>
 
-    <p>[Table with Sort, Serach]</p>
-    <ul>
-      <li ng-repeat="player in players">
-        {{player.first_name}}&nbsp;{{player.last_name}} [Details/Edit on Click]
-      </li>
-    </ul>
+    <table class="ball-table">
+      <thead>
+        <tr class="filter">
+          <th></th>
+          <th></th>
+          <th>
+              <input placeholder="Filter" class="ball-text-input" id="filter" ng-model="playerFilter">
+          </th>
+        </tr>
+        <tr>
+          <th id="firstName" ng-click="predicate = 'first_name'; reverse=!reverse; changeSortIcon('firstName', reverse)">First Name</th>
+          <th id="lastName" ng-click="predicate = 'last_name'; reverse=!reverse; changeSortIcon('lastName', reverse)">Last Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in players | filter:playerFilter | orderBy:predicate:reverse ">
+          <td>{{player.first_name}}</td><td>{{player.last_name}}</td><td>[Details/Edit on Click]</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
