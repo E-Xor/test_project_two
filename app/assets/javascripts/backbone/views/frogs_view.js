@@ -21,7 +21,7 @@ $(function(){ // This runs when document ready
       this.$el.html(this.template);
 
       this.collection.each(function(model){
-        $('#frogs_table').append(new App.Views.FrogItemView({model: model}).render());
+        $('#frogs_table').append(Mustache.render($('#frog_row_template').html(), model.attributes));
       });
 
       return this;

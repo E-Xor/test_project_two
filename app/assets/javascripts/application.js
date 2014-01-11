@@ -11,7 +11,6 @@
 //=require backbone/models/frog_model
 //=require backbone/collections/frogs_collection
 //=require backbone/views/frog_view
-//=require backbone/views/frog_item_view
 //=require backbone/views/frogs_view
 //=require backbone/routers/frog_router
 
