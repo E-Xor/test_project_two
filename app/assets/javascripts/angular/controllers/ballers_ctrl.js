@@ -1,15 +1,23 @@
-NgApp.controller('BallersCtrl', ['$scope', 'Ballers', function($scope, Ballers) {
+(function(){
+  NgApp.controller('BallersCtrl', ['$scope', 'BallersResource', 'Go',
 
-    $scope.changeSortIcon = function (id, reverse) {
-      $('#sortIndicator').remove();
-      var indicator = 'sort_up.png';
-      if(reverse) {
-        indicator = 'sort_down.png';
-      }
+    function($scope, BallersResource, Go) {
+      $scope.players = BallersResource.query();
 
-      $('#' + id).append("<img id='sortIndicator' src='/assets/"+indicator+"'/>");
+      $scope.changeSortIcon = function (id, reverse) {
+        $('#sortIndicator').remove();
+        var indicator = 'sort_up.png';
+        if(reverse) {
+          indicator = 'sort_down.png';
+        }
+
+        $('#' + id).append("<img id='sortIndicator' src='/assets/"+indicator+"'/>");
+      };
+
+      $scope.showDetailsPage = function (path, player) {
+        Go.go(path + '/' + player.id);
+      };
+
     }
-
-    return $scope.players = Ballers.query();
-  }
-]);
+  ]);
+})();

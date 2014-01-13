@@ -1,7 +1,10 @@
 TestProjectTwo::Application.routes.draw do
 
   resources :frogs, except: [:new, :edit] # New and Edit views are handled by Backbone
-  get 'ballers_dashboard' => 'ballers#main'
+
+  namespace :api do
+    resources :ballers
+  end
   resources :ballers
 
   root :to => 'frogs#main'

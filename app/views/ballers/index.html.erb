@@ -1,8 +1,10 @@
-<div id="ballersNgApp" ng-app="NgBallers">
+<div ng-app="NgBallers">
 
   <h4>Basketball players with details</h4>
   <div ng-controller="BallersCtrl">
-    <p>[Create form with save and reset]</p>
+    <p>[Quck create form with save, reset, validation plus full create form button]</p>
+    <form>
+    </form>
 
     <table class="ball-table">
       <thead>
@@ -14,13 +16,15 @@
           </th>
         </tr>
         <tr>
-          <th id="firstName" ng-click="predicate = 'first_name'; reverse=!reverse; changeSortIcon('firstName', reverse)">First Name</th>
-          <th id="lastName" ng-click="predicate = 'last_name'; reverse=!reverse; changeSortIcon('lastName', reverse)">Last Name</th>
+          <th id="firstName" ng-click="predicate='first_name'; reverse=!reverse; changeSortIcon('firstName', reverse)">First Name</th>
+          <th id="lastName" ng-click="predicate='last_name'; reverse=!reverse; changeSortIcon('lastName', reverse)">Last Name</th>
           <th>Actions</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr ng-repeat="player in players | filter:playerFilter | orderBy:predicate:reverse ">
+        <tr ng-repeat="player in players | filter:playerFilter | orderBy:predicate:reverse"
+            ng-click="showDetailsPage('<%= ballers_path %>', player)">
           <td>{{player.first_name}}</td><td>{{player.last_name}}</td><td>[Details/Edit on Click]</td>
         </tr>
       </tbody>

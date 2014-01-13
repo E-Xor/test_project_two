@@ -1,1 +1,1 @@
-var NgApp = angular.module('NgBallers', ['ngResource']);
+var NgApp = angular.module('NgBallers', ['ngResource', 'ngRoute']);

@@ -15,7 +15,10 @@
 //=require backbone/routers/frog_router
 
 //=require angular/app
-//=require angular/services/ballers_srv
+//=require angular/services/ballers_resource
+//=require angular/services/go
+//=require angular/services/get_id
 //=require angular/controllers/ballers_ctrl
+//=require angular/controllers/baller_ctrl
 
 //=require three/cube
