@@ -1,0 +1,21 @@
+<button id="create_frog" class="my_button" >Create a new Frog</button>
+
+<table id="frogs_table" class="fancy_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% _.each(models, function (model) { m = model.attributes %>
+      <tr class="clickable_row" frog-id="<%= m.id %>"">
+        <td><%= m.name %></td>
+        <td><%= m.age %></td>
+      </tr>
+    <% }); %>
+
+  </tbody>
+</table>

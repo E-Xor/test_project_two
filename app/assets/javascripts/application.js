@@ -7,6 +7,8 @@
 //=require lib/angular-resource.min
 //=require lib/three
 
+//= require_tree ./templates
+
 //=require backbone/app
 //=require backbone/models/frog_model
 //=require backbone/collections/frogs_collection

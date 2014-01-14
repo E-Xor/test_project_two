@@ -3,7 +3,7 @@ $(function(){ // This runs when document ready
   App.Views.FrogView = Backbone.View.extend({
     id: 'frog_details',
 
-    template: $('#frog_form_template').html(),
+    template: JST['templates/frogs/frog'],
 
     events: {
       "click #edit_frog_form": 'toggleEditFrogEventHandler',
@@ -50,7 +50,7 @@ $(function(){ // This runs when document ready
         attributes = this.collection.get(this.frogId).attributes;
       }
 
-      var m = Mustache.render(this.template, attributes);
+      var m = this.template(attributes);
       var el = this.$el.html(m);
 
       return this;

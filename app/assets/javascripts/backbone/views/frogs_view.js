@@ -3,7 +3,7 @@ $(function(){ // This runs when document ready
   App.Views.FrogsView = Backbone.View.extend({
     id: 'frog_index',
 
-    template: $('#frogs_template').html(),
+    template: JST['templates/frogs/frogs'],
 
     events: {
       "click tr.clickable_row": "renderFrogView",
@@ -18,11 +18,7 @@ $(function(){ // This runs when document ready
     },
 
     render: function() {
-      this.$el.html(this.template);
-
-      this.collection.each(function(model){
-        $('#frogs_table').append(Mustache.render($('#frog_row_template').html(), model.attributes));
-      });
+      this.$el.html(this.template({models: this.collection.models}));
 
       return this;
     },

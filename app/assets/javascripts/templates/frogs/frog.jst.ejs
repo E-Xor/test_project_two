@@ -3,8 +3,8 @@
   <div class="not-edit front">
     <button id="edit_frog_form" class="my_button">Edit</button>
     <button id="delete_frog_form" class="my_button">Delete</button>
-    <div class="frog_property">Name: {{name}}</div>
-    <div class="frog_property">Age: {{age}}</div>
+    <div class="frog_property">Name: <%= name %></div>
+    <div class="frog_property">Age: <%= age %></div>
   </div>
 
   <div class="edit back">
@@ -12,11 +12,11 @@
     <button id="cancel_edit_frog_form" class="my_button">Cancel</button>
     <div class="frog_property" id="name_line">
       <label for="name">Name</label> 
-      <input type="text" id="name" value="{{name}}" />
+      <input type="text" id="name" value="<%= name %>" />
     </div>
     <div class="frog_property" id="age_line">
       <label for="age">Age</label> 
-      <input type="text" id="age" value="{{age}}" />
+      <input type="text" id="age" value="<%= name %>" />
     </div>
   </div>
 
