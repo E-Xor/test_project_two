@@ -1,10 +1,6 @@
 // Explicitly load everything becuase order is important
-//=require lib/jquery-2.0.3
 //=require lib/underscore
-//=require lib/mustache
 //=require lib/backbone
-//=require lib/angular.min
-//=require lib/angular-resource.min
 //=require lib/three
 
 //= require_tree ./templates
