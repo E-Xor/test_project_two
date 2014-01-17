@@ -1,12 +1,18 @@
 <div ng-app="NgBallers">
   <div ng-controller="BallerCtrl">
-<pre>
-Fisrt Name: {{player.first_name}}
-Last Name:
-Position:
-Age:
-Height:
-Weight:
-</pre>
+      <pre>
+      [Picture]
+      Fisrt Name: {{player.first_name}}
+      Last Name: {{player.last_name}}
+      Position: {{player.position_full}}
+      Age: {{getAge(player.born)}}
+      Height: {{player.height}}
+      Weight: {{player.weight}}
+      </pre>
+
+      <%= render 'player_create_edit' %>
+  
   </div>
+
+
 </div>

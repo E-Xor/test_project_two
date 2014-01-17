@@ -14,10 +14,7 @@
         $('#' + id).append("<img id='sortIndicator' src='/assets/"+indicator+"'/>");
       };
 
-      $scope.showDetailsPage = function (path, player) {
-        Go.go(path + '/' + player.id);
-      };
-
+      $scope.go = Go.go;
     }
   ]);
 })();

@@ -3,9 +3,9 @@ TestProjectTwo::Application.routes.draw do
   resources :frogs, except: [:new, :edit] # New and Edit views are handled by Backbone
 
   namespace :api do
-    resources :ballers
+    resources :ballers, except: [:new, :edit]
   end
-  resources :ballers
+  resources :ballers, only: [:index, :show, :new]
 
   root :to => 'frogs#main'
   get 'main' => 'frogs#main'

@@ -1,10 +1,7 @@
 <div ng-app="NgBallers">
 
-  <h4>Basketball players with details</h4>
   <div ng-controller="BallersCtrl">
-    <p>[Quck create form with save, reset, validation plus full create form button]</p>
-    <form>
-    </form>
+    <button class="ball-button" id="addPlayerButton" ng-click="go('<%= ballers_path %>/new')">Add a new player</button>
 
     <table class="ball-table">
       <thead>
@@ -24,7 +21,7 @@
 
       <tbody>
         <tr ng-repeat="player in players | filter:playerFilter | orderBy:predicate:reverse"
-            ng-click="showDetailsPage('<%= ballers_path %>', player)">
+            ng-click="go('<%= ballers_path %>/' + player.id)">
           <td>{{player.first_name}}</td><td>{{player.last_name}}</td><td>[Details/Edit on Click]</td>
         </tr>
       </tbody>
