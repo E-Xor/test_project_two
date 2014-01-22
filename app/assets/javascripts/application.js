@@ -2,6 +2,7 @@
 //=require lib/underscore
 //=require lib/backbone
 //=require lib/three
+//=require lib/google_analytics
 
 //= require_tree ./templates
 
