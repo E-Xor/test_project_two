@@ -49,4 +49,25 @@ class FrogsController < ApplicationController
       render :json => {error: "Error happened destroying a frog"}, :status => :unprocessable_entity
     end
   end
+
+  def search
+    search_params = params.slice(:name, :age)
+    if search_params.length == 2
+      search = Frog.search do
+        fulltext search_params[:name]
+        with :age, params[:age]
+      end
+    elsif search_params.length == 1
+      if search_params.has_key?(:name)
+        search = Frog.search { fulltext search_params[:name] }
+      else
+        search = Frog.search { with :age, params[:age] }
+      end
+    else
+      render json: []
+      return
+    end
+
+    render json: search.results
+  end
 end
