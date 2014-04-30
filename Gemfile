@@ -8,7 +8,7 @@ gem 'sunspot_rails', '~> 2.1.0'
 gem 'sunspot_solr', '~> 2.1.0'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2'
+  gem 'sass-rails', '~> 3.2'
   gem 'uglifier', '~> 2.1'
   gem 'ejs', '~> 1.1.1'
 end
