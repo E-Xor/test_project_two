@@ -1,109 +1,27 @@
-body {
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  text-align: left;
-  position: relative;
-  min-width: 1004px;
-  font-family: Cabin,Helvetica,Arial,sans-serif;
-  min-height: 100%;
-  line-height: 20px;
-}
-
-header {
-  height: 99px;
-  width: 100%; 
-  top: 0;
-  left: 0;
-  background: #F7F7F7;
-
-  border-bottom: 1px solid #acacac;
-}
-
-#nav-and-content {
-  position: relative;
-  background: #F7F7F7;
-  width: 1000px;
-  margin: 0 auto;
+html, body { /* for the footer */
   height: 100%;
-  min-height: 1000px;
-  display: block;
 }
 
-nav {
-  background: #F7F7F7;
-  left: 0;
-  top: 100px;
-  float: left;
-  width: 199px;
-  min-height: 1000px;
-
-  border-right: 1px solid #acacac;
+.wrapper { /* for the footer */
+  min-height: 100%;
+  margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
 }
 
-main {
-  padding-left: 10px;
-  padding-right: 10px;
-  float: left;
-  background: #FFFFFF;
-  width: 779px;
-  min-height: 1000px;
-
-  border-right: 1px solid #acacac;
+.footer, .push { /* for the footer */
+  height: 60px; /* .push must be the same height as .footer */
 }
 
-footer {
-  background: #F7F7F7;
-  clear: both;
-  position: realtive;
-  bottom: 0;
-  width: 100%;
-  height: 49px;
-  left: 0;
-
-  border-top: 1px solid #acacac;
+.footer { /* for the footer */
+  background-color: #f5f5f5;
 }
 
-.place {
-  color: #bbb;
-  display: block;
-  margin-bottom: 10px;
+.text-muted { /* for the footer */
+  margin: 20px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-
-ul.menu {
-    list-style-type: none;
-}
-
-ul.menu > li {
-    margin-left: -10px;
-}
-
-.menu a {
-    padding: 10px 0 10px 30px;
-    margin-left: -30px;
-    border: 1px dotted black;
-    width: 148px;
-    display: inline-block;
-    text-decoration: none;
-    color: SaddleBrown;
-    position: relative;
-}
-
-.menu a:hover {
-    left: 20px;     
-    transition: left 0.5s cubic-bezier(.16,.81,.39,.78);
-    -o-transition: left 0.5s cubic-bezier(.16,.81,.39,.78);
-    -ms-transition: left 0.5s cubic-bezier(.16,.81,.39,.78);
-    -moz-transition: left 0.5s cubic-bezier(.16,.81,.39,.78);
-    -webkit-transition: left 0.5s cubic-bezier(.16,.81,.39,.78);
-}
-
-.menu a:not(:hover) {
-    left: 0;     
-    transition: left 0.2s linear;
-    -o-transition: left 0.2s linear;
-    -ms-transition: left 0.2s linear;
-    -moz-transition: left 0.2s linear;
-    -webkit-transition: left 0.2s linear;
+.table td {
+  cursor: pointer;
 }

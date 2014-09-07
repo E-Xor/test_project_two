@@ -1,45 +1,14 @@
-.fancy_table {
-  border-collapse: collapse;
-}
-
-.fancy_table td, .fancy_table th {
-  border-right: dotted 1px #ababab;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #cdcdcd;
-  padding: 0 10px 0 10px;
-  vertical-align: middle;
-}
-
-.fancy_table td {
-  background-color: #eee;
-  cursor: pointer;
-}
-
-.frog_property {
-  height: 21px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
-
-.frog_property label {
-  width: 75px;
-  float:  left;
-}
-
-.error {
-  color: red;
-  margin: 20px;
-}
-
-.inline_error {
-  color: red;
-  line-height: 16px;
-  font-size: 14px;
-  padding: 5px;
-}
-
 #frog_form {
   width: 250px;
   height: 110px;
   white-space:nowrap;
+}
+
+.frog-properties {
+  margin-top: 20px;
+}
+
+.frog-properties strong {
+  width: 80px;
+  display: inline-block;
 }

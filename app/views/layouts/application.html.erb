@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>TestProjectTwo</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "http://code.jquery.com/jquery-2.0.3.min.js"%>
-    <%= javascript_include_tag "http://code.angularjs.org/1.2.8/angular.min.js"%>
-    <%= javascript_include_tag "http://code.angularjs.org/1.2.8/angular-resource.min.js"%>
+    <%= stylesheet_link_tag    "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :media => "all" %>
+    <%= javascript_include_tag "http://code.jquery.com/jquery-2.0.3.min.js" %>
+    <%= javascript_include_tag "http://code.angularjs.org/1.2.8/angular.min.js" %>
+    <%= javascript_include_tag "http://code.angularjs.org/1.2.8/angular-resource.min.js" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" %>
 
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <header><span class="place">&lt;Header&gt;</span></header>
+    <div class="wrapper">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Maksim's Demo</a>
+          </div>
 
-  <div id="nav-and-content">
-    <nav>
-      <span class="place">&lt;Menu&gt;</span>
-      <%= render 'shared/menu' %>
-    </nav>
-    <main>
-      <span class="place">&lt;Content&gt;</span>
-      <%= yield %>
-    </main>
-  </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-button">
+            <ul class="nav navbar-nav">
+              <%= render 'shared/menu' %>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-  <footer>
-    <span class="place">&lt;Footer&gt;</span>
-  </footer>
+      <div class="container-fluid">
+        <div class="col-xs-offset-1 col-sm-10" id="content">
 
-</body>
+          <%= yield %>
+
+        </div>
+      </div>
+
+      <div class="push"></div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p class="text-muted">Created by Maksim Sundukov to demonstrate Rails, BackboneJS, AngularJS, TreeJS, Botstrap.</p>
+      </div>
+    </div>
+
+  </body>
 </html>
