@@ -10,7 +10,7 @@ var VIEW_ANGLE = 45,
     FAR = 10000;
 
 // Init
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ alpha: true });
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
                                          ASPECT,
@@ -19,6 +19,7 @@ var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
 scene.add(camera);
 camera.position.z = 300; // The camera starts at 0,0,0 so pull it back
 renderer.setSize(WIDTH, HEIGHT);
+renderer.setClearColor( 0xffffff, 1);
 
 // Material
 var darkMaterial = new THREE.MeshLambertMaterial({color: 0xFFFFFF, transparent: true});
