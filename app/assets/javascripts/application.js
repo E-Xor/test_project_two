@@ -19,5 +19,3 @@
 //=require angular/controllers/ballers_ctrl
 //=require angular/controllers/baller_ctrl
 
-//=require lib/three
-//=require three/cube
