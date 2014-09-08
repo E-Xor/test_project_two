@@ -152,19 +152,14 @@
 
       var modelForDeletion = this.collection.get(this.frogId);
 
-      var originalText = this.startThrobber($(e.target));
-
-      // Make a custom modal window <--
       if(confirm("You're about to delete a frog "+ modelForDeletion.get('name') + ' ' + this.frogId +". That can't be undone.")) {
         self = this;
         modelForDeletion.destroy(
           {
             success: function(model, response, options){
-              self.stopThrobber($(e.target), originalText);
               Backbone.history.navigate('frogs', true);
             },
             error: function(model, response, options){
-              self.stopThrobber($(e.target), originalText);
               self.handleError(model, response, options);
             },
             wait: true 
@@ -173,7 +168,6 @@
         );
       }
 
-      this.stopThrobber($(e.target), originalText);
     },
 
     cancelHandler: function(e) {
