@@ -1,7 +1,8 @@
-[Validate form]
-    <form id="player_edit_form" name="player_edit_form">
-      <label for="first_name" class="ball-label" >First Name:</label>
-      <input id="first_name" name="first_name" ng-model="player.first_name" class="ball-text-input" />
-      <button ng-click="updatePlayer()" class="ball-button">Update Player</button>
-      <button ng-click="resetPlayer()" class="ball-button">Reset Form</button>
-    </form>
+<form role="form" class="col-sm-4">
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input class="form-control" name="first_name" ng-model="player.first_name" />
+  </div>
+
+  <button ng-click="updatePlayer()" class="btn btn-default">Update/Create Player</button>
+</form>

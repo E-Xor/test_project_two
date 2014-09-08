@@ -1,7 +1,6 @@
 // Explicitly load everything becuase order is important
 //=require lib/underscore
 //=require lib/backbone
-//=require lib/three
 //=require lib/google_analytics
 
 //= require_tree ./templates
@@ -20,4 +19,5 @@
 //=require angular/controllers/ballers_ctrl
 //=require angular/controllers/baller_ctrl
 
+//=require lib/three
 //=require three/cube

@@ -25,3 +25,8 @@ html, body { /* for the footer */
 .table td {
   cursor: pointer;
 }
+
+.validation-error {
+  color: #ff1818;
+  font-style: italic;
+}

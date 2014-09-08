@@ -12,3 +12,8 @@
   width: 80px;
   display: inline-block;
 }
+
+#edit_frog_form.throbberBtn, #delete_frog_form.throbberBtn, #save_edit_frog_form.throbberBtn {
+  background-image: url('/assets/throbber.gif');
+  background-repeat: no-repeat;
+}
