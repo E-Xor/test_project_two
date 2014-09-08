@@ -1,4 +1,4 @@
-var App = {
+;var App = {
   Views: {},
   Routers: {},
   Collections: {},

@@ -1,113 +1,42 @@
-table.ball-table {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px 10px;
-    border-spacing: 0;
-}
-
-table.ball-table>thead>tr>th {
-    vertical-align: bottom;
-    padding: 10px 15px 0 5px;
-    border-bottom: 2px solid #ddd;
-    text-align: left;
-    width: 100px;
-}
-
-table.ball-table>thead>tr.filter>th {
-    border-bottom: 0px;
-}
-
-table.ball-table>tbody>tr>td {
-    padding: 10px 15px 10px 5px;
-    border-top: 1px solid #ddd;
-    text-align: left;
-}
-
-table.ball-table>tbody>tr:hover {
-  background-color: #efefef;
-}
-
-table.ball-table>tbody>tr>td>img {
-    width: 20px;
-    height: 20px;
-    display: block;
-    margin: 0 auto;
-}
-
-.ball-text-input {
-    display: block;
-    width: 200px;
-    height: 20px;
-    padding: 6px 12px;
-    margin: 10px;
-    color: #555;
-    font-size: 14px;
-    vertical-align: middle;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-.ball-text-input#filter {
-    width: 150px;
-    margin: -10px -15px 10px 0;
-}
-
 img#sortIndicator {
-    margin-left: 5px;
-    width: 10px;
-    height: 10px;
+  margin-left: 5px;
+  width: 10px;
+  height: 10px;
 }
 
-button.ball-button {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 20px;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: transparent;
+.sortable {
+  cursor: pointer;
 }
 
-button.ball-button:hover{
-    color: #333;
-    background-color: #ebebeb;
-    border-color: #adadad;
+#filter {
+  font-weight: normal;
+  padding-left: 30px;
 }
 
-button#addPlayerButton {
-    margin-left: 10px;
-    margin-bottom: 10px;
+#filterIcon {
+  position: absolute;
+  top: 8px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
 }
 
-.ball-label {
-    display: inline-block;
-    font-weight: bold;
-}
 
-.ball-text-input {
-    display: block;
-    width: 200px;
-    height: 20px;
-    padding: 6px 12px;
-    margin: 10px;
-    color: #555;
-    font-size: 14px;
-    vertical-align: middle;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+#filter:-moz-placeholder {
+  color: #ccc;
+  font-weight: normal;
+}
+#filter::-moz-placeholder {
+  color: #ccc;
+  font-weight: normal;
+}
+#filter:-ms-input-placeholder {
+  color: #ccc;
+  font-weight: normal;
+}
+#filter::-webkit-input-placeholder {
+  color: #ccc;
+  font-weight: normal;
 }

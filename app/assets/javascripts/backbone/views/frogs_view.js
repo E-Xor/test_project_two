@@ -1,4 +1,4 @@
-$(function(){ // This runs when document ready
+;$(function(){ // This runs when document ready
               // so we don't have to call new somwhere else
   App.Views.FrogsView = Backbone.View.extend({
     id: 'frog_index',

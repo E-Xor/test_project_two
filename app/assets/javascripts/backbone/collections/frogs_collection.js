@@ -1,4 +1,4 @@
-$(function(){
+;$(function(){
   App.Collections.FrogsCollection = Backbone.Collection.extend({
     model : App.Models.FrogModel,
     url : "/frogs",

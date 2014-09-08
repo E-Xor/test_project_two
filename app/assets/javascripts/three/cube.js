@@ -1,3 +1,4 @@
+;
 // Scene size
 var WIDTH = 400,
     HEIGHT = 300;

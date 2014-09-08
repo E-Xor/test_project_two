@@ -3,6 +3,7 @@
   <div class="not-edit front">
     <button id="edit_frog_form" class="btn btn-default">Edit</button>
     <button id="delete_frog_form" class="btn btn-default">Delete</button>
+    <a href="/main" class="btn btn-primary" role="button">All Frogs</a>
 
     <div class="frog-properties">
       <div><strong>Name:&nbsp;</strong><%= name %></div>
@@ -13,6 +14,7 @@
   <div class="edit back">
     <button id="save_edit_frog_form" class="btn btn-default">Save</button>
     <button id="cancel_edit_frog_form" class="btn btn-default">Cancel</button>
+    <a href="/main" class="btn btn-primary" role="button">All Frogs</a>
 
     <form role="form" class="frog-properties">
       <div class="form-group" id="name_line">
@@ -22,7 +24,7 @@
 
       <div class="form-group" id="age_line">
         <label for="age">Age</label> 
-        <input type="text" id="age" class="form-control" placeholder="Age" value="<%= name %>" />
+        <input type="text" id="age" class="form-control" placeholder="Age" value="<%= age %>" />
       </div>
     </form>
   </div>

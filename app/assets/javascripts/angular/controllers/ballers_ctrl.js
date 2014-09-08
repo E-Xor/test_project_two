@@ -1,4 +1,4 @@
-(function(){
+;(function(){
   NgApp.controller('BallersCtrl', ['$scope', 'BallersResource', 'Go',
 
     function($scope, BallersResource, Go) {

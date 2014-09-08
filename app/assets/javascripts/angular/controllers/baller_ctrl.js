@@ -1,4 +1,4 @@
-(function(){
+;(function(){
   NgApp.controller('BallerCtrl', ['$scope', 'BallersResource', 'GetId',
 
     function ($scope, BallersResource, GetId) {

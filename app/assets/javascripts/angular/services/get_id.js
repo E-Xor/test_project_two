@@ -1,4 +1,4 @@
-(function(){
+;(function(){
   NgApp.service('GetId', function () {
 
     this.get = function(name) {

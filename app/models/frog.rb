@@ -3,9 +3,9 @@ class Frog < ActiveRecord::Base
   validates :name, presence: true
   validates :age, numericality: {greater_than: 0, less_than: 100}
 
-  searchable do
-    text :name
-    integer :age
-  end
+  # searchable do # Uncomment if you want to use Solr
+  #   text :name
+  #   integer :age
+  # end
 
 end

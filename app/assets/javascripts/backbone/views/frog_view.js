@@ -1,4 +1,4 @@
-$(function(){ // This runs when document ready
+;$(function(){ // This runs when document ready
               // so we don't have to call new somwhere else
   App.Views.FrogView = Backbone.View.extend({
     id: 'frog_details',
@@ -172,6 +172,8 @@ $(function(){ // This runs when document ready
 
         );
       }
+
+      this.stopThrobber($(e.target), originalText);
     },
 
     cancelHandler: function(e) {
@@ -187,6 +189,7 @@ $(function(){ // This runs when document ready
 
     startThrobber: function($el){ // Move to a separate lib
       var originalText = $el.text();
+      $el.addClass('disabled');
       $el.addClass('throbberBtn');
 
       var originaWidth = $el.outerWidth(); 
@@ -203,6 +206,7 @@ $(function(){ // This runs when document ready
     },
 
     stopThrobber: function($el, originalText){ // Move to a separate lib
+        $el.removeClass('disabled');
         $el.removeClass('throbberBtn');
         $el.text(originalText);
     }

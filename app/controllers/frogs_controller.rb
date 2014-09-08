@@ -13,6 +13,8 @@ class FrogsController < ApplicationController
   end
 
   def create
+    sleep 3 # To demonstra a throbber
+
     begin
       frog = Frog.create!(params[:frog])
 
@@ -25,6 +27,8 @@ class FrogsController < ApplicationController
   end
 
   def update
+    sleep 3 # To demonstra a throbber
+
     begin
       frog = Frog.find(params[:id])
       frog.update_attributes!(params[:frog])
@@ -51,6 +55,8 @@ class FrogsController < ApplicationController
   end
 
   def search
+    # Make sure you have Solr runing and indexed the table before you use this action
+
     search_params = params.slice(:name, :age)
     if search_params.length == 2
       search = Frog.search do

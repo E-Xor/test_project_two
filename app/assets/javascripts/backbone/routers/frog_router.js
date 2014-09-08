@@ -1,4 +1,4 @@
-$(function(){
+;$(function(){
   App.Routers.FrogRouter = Backbone.Router.extend({
     routes: {
       '': 'index',
@@ -63,7 +63,7 @@ $(function(){
       else {
         this.currentView.render();
       }
-      window.scrollTo(0);
+      window.scrollTo(0, 0);
     }
 
   });
