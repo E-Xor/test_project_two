@@ -27,7 +27,7 @@ darkMaterial.side = THREE.DoubleSide;
 darkMaterial.opacity = 0.99;
 
 // Object
-var cube = new THREE.Mesh( new THREE.CubeGeometry( 100, 100, 100 ), darkMaterial );
+var cube = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), darkMaterial );
 scene.add(cube);
 
 // Light
