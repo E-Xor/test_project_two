@@ -1,11 +1,23 @@
 <form role="form" class="col-sm-4">
   <div class="form-group">
     <label for="first_name">First Name</label>
-    <input class="form-control" name="first_name" ng-model="player.first_name" />
+    <input class="form-control" name="first_name" ng-model="player.first_name" ng-required="true" />
   </div>
   <div class="form-group">
     <label for="last_name">Last Name</label>
-    <input class="form-control" name="last_name" ng-model="player.last_name" />
+    <input class="form-control" name="last_name" ng-model="player.last_name" ng-required="true" />
+  </div>
+
+  <div class="form-group">
+    <label for="born">Date of Birth</label>
+    <div ng-controller="DatePickerCtrl">
+      <div class="input-group">
+        <input type="text" class="form-control" name="born" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" min-date="minDate" max-date="maxDate" show-button-bar="false"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
   </div>
 
   <% if controller.request.params[:action] == 'new' %>
@@ -15,3 +27,5 @@
     <button ng-click="deletePlayer()" class="col-sm-offset-1 btn btn-danger">Delete Player</button>
   <% end %>
 </form>
+
+<%= render 'modal_window' %>

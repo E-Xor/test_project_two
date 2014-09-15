@@ -25,11 +25,15 @@ class Api::BallersController < ApplicationController
   def create
     create_params = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
     b = BallPlayer.create!(create_params)
-    render json: {created: 'ok', ball_player: b}.to_json
+    render json: b.to_json
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error "Validation Error in Api::BallersController#create:\n\t#{e.inspect}"
+    Rails.logger.error "Create params: #{create_params}" if create_params
+    render json: {error: e.to_s}, status: :internal_server_error
   rescue => e
     Rails.logger.error "Error saving in Api::BallersController#create:\n\t#{e.inspect}"
     Rails.logger.error "Create params: #{create_params}" if create_params
-    render json: {saved: 'error'}, status: :internal_server_error
+    render json: {error: 'error'}, status: :internal_server_error
   end
 
   def update

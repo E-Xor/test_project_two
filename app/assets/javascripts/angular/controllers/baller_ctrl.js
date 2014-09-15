@@ -1,7 +1,7 @@
 ;(function(){
-  NgApp.controller('BallerCtrl', ['$scope', 'BallersResource', 'GetId', 'Go',
+  NgApp.controller('BallerCtrl', ['$scope', 'BallersResource', 'GetId', 'Go', 'ModalWindow',
 
-    function ($scope, BallersResource, GetId, Go) {
+    function ($scope, BallersResource, GetId, Go, ModalWindow) {
       $scope.playerId = GetId.get("ballers");
 
       if(/^\d+$/.test($scope.playerId) ) {
@@ -28,15 +28,14 @@
       };
 
       $scope.updatePlayer = function () {
-        console.log('updatePlayer ', $scope.player);
         $scope.player.$update(
           function(){
-            console.log('Updated!');
             Go.go('/ballers');
           },
           function(){
-            console.log('Error updating');
-            alert('Error happened updating the record'); // Make it modal
+            var messageFromBakend = '';
+            if(error.data && error.data.error) { messageFromBakend = error.data.error }
+            ModalWindow.show('Error Saving','Error happened updating the player. Please try again later. ' + messageFromBakend);
           }
         );
       };
@@ -46,34 +45,36 @@
       };
 
       $scope.createPlayer = function () {
-        console.log('createPlayer ', $scope.player);
         $scope.player.$save(
           function(){
-            console.log('Saved!');
             Go.go('/ballers');
           },
-          function(){
-            console.log('Error saving');
-            alert('Error happened saving the record'); // Make it modal
+          function(error){
+            var messageFromBakend = '';
+            if(error.data && error.data.error) { messageFromBakend = error.data.error }
+            ModalWindow.show('Error Saving','Error happened saving the player. Please try again later. ' + messageFromBakend);
           }
         );
       };
 
       $scope.deletePlayer = function () {
-        console.log('deletePlayer ', $scope.player);
-        if(confirm('Are you sure?')) {
+        ModalWindow.show('Are you sure?', 'Do you really want to delete ' + $scope.player.first_name + ' ' + $scope.player.last_name + '?')
+        .then(function(result){
           $scope.player.$delete(
             function(){
               console.log('Deleted!');
               Go.go('/ballers');
             },
             function(){
-              console.log('Error deleting');
-              alert('Error happened deleting the record'); // Make it modal
+              var messageFromBakend = '';
+              if(error.data && error.data.error) { messageFromBakend = error.data.error }
+              ModalWindow.show('Error Saving','Error happened deleting the player. Please try again later. ' + messageFromBakend);
             }
-          )
-        }
+          );
+        });
+
       };
+
     }
 
   ]);

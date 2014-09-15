@@ -1,3 +1,3 @@
 ;(function() {
-  window.NgApp = angular.module('NgBallers', ['ngResource']);
+  window.NgApp = angular.module('NgBallers', ['ngResource', 'ui.bootstrap']);
 })();

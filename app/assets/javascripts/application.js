@@ -1,7 +1,15 @@
 // Explicitly load everything becuase order is important
-//=require lib/underscore
-//=require lib/backbone
-//=require lib/google_analytics
+
+//=require jquery-2.1.1.min
+
+//=require underscore
+//=require backbone
+//=require google_analytics
+
+//=require angular.min
+//=require angular-resource.min
+//=require bootstrap.min
+//=require ui-bootstrap-tpls-0.11.0.min
 
 //= require_tree ./templates
 
@@ -13,11 +21,15 @@
 //=require backbone/routers/frog_router
 
 //=require angular/app
+//=require angular/services/modal_window
 //=require angular/services/ballers_resource
 //=require angular/services/go
 //=require angular/services/get_id
 //=require angular/controllers/ballers_ctrl
 //=require angular/controllers/baller_ctrl
+//=require angular/controllers/date_picker_ctrl
 
+
+//=require three.min
 //=require three/cube
 
