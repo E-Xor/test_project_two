@@ -29,7 +29,5 @@
 //=require angular/controllers/baller_ctrl
 //=require angular/controllers/date_picker_ctrl
 
-
-//=require three.min
 //=require three/cube
 
