@@ -33,9 +33,9 @@
             Go.go('/ballers');
           },
           function(){
-            var messageFromBakend = '';
-            if(error.data && error.data.error) { messageFromBakend = error.data.error }
-            ModalWindow.show('Error Saving','Error happened updating the player. Please try again later. ' + messageFromBakend);
+            var messageFromBackend = '';
+            if(error.data && error.data.error) { messageFromBackend = error.data.error }
+            ModalWindow.show('Error Saving','Error happened updating the player. Please try again later. ' + messageFromBackend);
           }
         );
       };
@@ -50,9 +50,9 @@
             Go.go('/ballers');
           },
           function(error){
-            var messageFromBakend = '';
-            if(error.data && error.data.error) { messageFromBakend = error.data.error }
-            ModalWindow.show('Error Saving','Error happened saving the player. Please try again later. ' + messageFromBakend);
+            var messageFromBackend = '';
+            if(error.data && error.data.error) { messageFromBackend = error.data.error }
+            ModalWindow.show('Error Saving','Error happened saving the player. Please try again later. ' + messageFromBackend);
           }
         );
       };
@@ -66,9 +66,9 @@
               Go.go('/ballers');
             },
             function(){
-              var messageFromBakend = '';
-              if(error.data && error.data.error) { messageFromBakend = error.data.error }
-              ModalWindow.show('Error Saving','Error happened deleting the player. Please try again later. ' + messageFromBakend);
+              var messageFromBackend = '';
+              if(error.data && error.data.error) { messageFromBackend = error.data.error }
+              ModalWindow.show('Error Saving','Error happened deleting the player. Please try again later. ' + messageFromBackend);
             }
           );
         });
