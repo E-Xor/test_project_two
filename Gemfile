@@ -6,6 +6,7 @@ gem 'pg', '~> 0.17'
 gem 'mysql2', '~> 0.3.14'
 gem 'sunspot_rails', '~> 2.1.0'
 gem 'sunspot_solr', '~> 2.1.0'
+gem 'uglifier', '~> 2.1'
 
 group :assets do
   gem 'sass-rails', '~> 3.2'
