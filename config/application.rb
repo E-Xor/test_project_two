@@ -1,6 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'sass'
+require 'sass/script'
+require 'sass/script/number'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -60,6 +63,8 @@ module TestProjectTwo
     config.assets.version = '1.0'
 
     config.assets.paths << "#{Rails.root}/vendor/assets/fonts/bootstrap/"
+
+    Sass::Script::Number.precision = 10
 
   end
 end
