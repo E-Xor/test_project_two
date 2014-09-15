@@ -60,6 +60,6 @@ module TestProjectTwo
     config.assets.version = '1.0'
 
     config.assets.paths << "#{Rails.root}/vendor/assets/fonts/bootstrap/"
-    Sass::Script::Number.precision = 10
+
   end
 end
