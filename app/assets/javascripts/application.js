@@ -27,7 +27,6 @@
 //=require angular/services/get_id
 //=require angular/controllers/ballers_ctrl
 //=require angular/controllers/baller_ctrl
-//=require angular/controllers/date_picker_ctrl
 
 //=require three/cube
 

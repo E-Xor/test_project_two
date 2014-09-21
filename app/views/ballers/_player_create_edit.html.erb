@@ -1,4 +1,4 @@
-<form role="form" class="col-sm-4">
+<form role="form" class="col-sm-6">
   <div class="form-group">
     <label for="first_name">First Name</label>
     <input class="form-control" name="first_name" ng-model="player.first_name" ng-required="true" />
@@ -10,13 +10,11 @@
 
   <div class="form-group">
     <label for="born">Date of Birth</label>
-    <div ng-controller="DatePickerCtrl">
-      <div class="input-group">
-        <input type="text" class="form-control" name="born" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" min-date="minDate" max-date="maxDate" show-button-bar="false"/>
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-        </span>
-      </div>
+    <div class="input-group">
+      <input type="text" class="form-control" name="born" datepicker-popup="dd-MMMM-yyyy" ng-model="player.born" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" min-date="minDate" max-date="maxDate" show-button-bar="false"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
     </div>
   </div>
 

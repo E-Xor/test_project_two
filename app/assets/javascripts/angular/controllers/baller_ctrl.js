@@ -27,10 +27,42 @@
         return age;
       };
 
+      $scope.openDatePicker = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        if(typeof $scope.player.born == "string") {
+          // Convert to Date
+          var d = new Date($scope.player.born);
+          // Avoid possible date change
+          // Use noon, it will be properly converted for update
+          $scope.player.born = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 12, 0, 0);
+        }
+
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        showWeeks: false
+      };
+
+      $scope.minDate = new Date('1950-12-31');
+      $scope.maxDate = new Date('1996-01-01');
+
+
       $scope.updatePlayer = function () {
+        if(typeof $scope.player.born != "string") {
+          // Avoid possible date change
+          // Use UTC noon, not browser local time
+          var d = $scope.player.born;
+          $scope.player.born = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 12, 0, 0));
+          console.log($scope.player.born);
+        }
+
         $scope.player.$update(
           function(){
-            Go.go('/ballers');
+            // Go.go('/ballers');
+            $scope.player = $scope.originalPlayer;
           },
           function(){
             var messageFromBackend = '';
@@ -46,8 +78,8 @@
 
       $scope.createPlayer = function () {
         $scope.player.$save(
-          function(){
-            Go.go('/ballers');
+          function(data){
+            Go.go('/ballers/' + data.id);
           },
           function(error){
             var messageFromBackend = '';
