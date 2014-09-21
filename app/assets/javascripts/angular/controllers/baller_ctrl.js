@@ -2,6 +2,10 @@
   NgApp.controller('BallerCtrl', ['$scope', 'BallersResource', 'GetId', 'Go', 'ModalWindow',
 
     function ($scope, BallersResource, GetId, Go, ModalWindow) {
+      setTimeout(function () {
+        angular.element(".saved-blink").addClass("disappear");
+      }, 1000);
+
       $scope.playerId = GetId.get("ballers");
 
       if(/^\d+$/.test($scope.playerId) ) {
@@ -27,9 +31,19 @@
         return age;
       };
 
+      // Date Picker
+
+      $scope.minDate = new Date('1950-12-31');
+      $scope.maxDate = new Date('1996-01-01');
+
       $scope.openDatePicker = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
+
+        if(typeof $scope.player.born == "undefined") {
+          var d = $scope.maxDate
+          $scope.player.born = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()-1, 12, 0, 0);
+        }
 
         if(typeof $scope.player.born == "string") {
           // Convert to Date
@@ -45,10 +59,6 @@
       $scope.dateOptions = {
         showWeeks: false
       };
-
-      $scope.minDate = new Date('1950-12-31');
-      $scope.maxDate = new Date('1996-01-01');
-
 
       $scope.updatePlayer = function () {
         if(typeof $scope.player.born != "string") {
@@ -77,11 +87,15 @@
       };
 
       $scope.createPlayer = function () {
+        angular.element("#player-form").addClass("loading");
+
         $scope.player.$save(
           function(data){
+            angular.element("#player-form").removeClass("loading");
             Go.go('/ballers/' + data.id);
           },
           function(error){
+            angular.element("#player-form").removeClass("loading");
             var messageFromBackend = '';
             if(error.data && error.data.error) { messageFromBackend = error.data.error }
             ModalWindow.show('Error Saving','Error happened saving the player. Please try again later. ' + messageFromBackend);
