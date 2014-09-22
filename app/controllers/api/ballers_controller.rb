@@ -25,6 +25,7 @@ class Api::BallersController < ApplicationController
   def create
     create_params = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
     b = BallPlayer.create!(create_params)
+    flash[:saved] = true
     render json: b.to_json
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error "Validation Error in Api::BallersController#create:\n\t#{e.inspect}"
@@ -40,6 +41,7 @@ class Api::BallersController < ApplicationController
     b = BallPlayer.find(params[:id])
     attributes_for_update = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
     b.update_attributes!(attributes_for_update)
+    flash[:saved] = true
     render json: {updated: 'ok', ball_player: b}.to_json
   rescue => e
     Rails.logger.error "Error updating in Api::BallersController#create:\n\t#{e.inspect}"

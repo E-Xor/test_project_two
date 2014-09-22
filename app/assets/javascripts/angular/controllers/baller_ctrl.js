@@ -71,8 +71,7 @@
 
         $scope.player.$update(
           function(){
-            // Go.go('/ballers');
-            $scope.player = $scope.originalPlayer;
+            Go.go('/ballers/' + $scope.playerId);
           },
           function(){
             var messageFromBackend = '';

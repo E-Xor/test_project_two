@@ -23,9 +23,11 @@
   <% else %>
     <button ng-click="updatePlayer()" class="btn btn-primary">Update Player</button>
     <button ng-click="deletePlayer()" class="col-sm-offset-1 btn btn-danger">Delete Player</button>
-    <div class="saved-blink">
-      Saved!
-    </div>
+    <% if flash[:saved] %>
+      <div class="saved-blink">
+        Saved!
+      </div>
+    <% end %>
   <% end %>
   <div class="ajax-loader"></div>
 </form>
