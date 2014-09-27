@@ -1,5 +1,4 @@
 class BallersController < ApplicationController
-
   def index
   end
 
