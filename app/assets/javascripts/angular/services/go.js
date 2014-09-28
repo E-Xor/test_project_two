@@ -1,10 +1,14 @@
 ;(function(){
-  NgApp.service('Go', function () {
+  NgApp.service('Go', ['$window', function ($window) {
 
     this.go = function(location) {
-      window.location.href = location;
+      if($window.location.href == location) {
+        $window.location.reload();
+      } else {
+        $window.location.href = location;
+      }
     }
 
-  });
+  }]);
 
 })();

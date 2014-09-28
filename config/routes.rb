@@ -8,7 +8,7 @@ TestProjectTwo::Application.routes.draw do
   end
   resources :ballers, only: [:index, :show, :new]
 
-  root :to => 'frogs#main'
+  root :to => 'ballers#index'
   get 'main' => 'frogs#main'
 
   get 'cube' => 'cube#index'

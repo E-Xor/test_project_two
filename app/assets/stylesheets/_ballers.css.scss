@@ -39,3 +39,11 @@ img#sortIndicator {
   color: #ccc;
   font-weight: normal;
 }
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  z-index: 9999;
+}
