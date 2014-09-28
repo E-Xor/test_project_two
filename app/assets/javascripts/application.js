@@ -8,8 +8,10 @@
 
 //=require angular.min
 //=require angular-resource.min
+//=require angular-sanitize.min
 //=require bootstrap.min
 //=require ui-bootstrap-tpls-0.11.0.min
+//=require ui-utils.min
 
 //= require_tree ./templates
 

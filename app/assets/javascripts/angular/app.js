@@ -1,6 +1,6 @@
 ;(function() {
 
-  window.NgApp = angular.module('NgBallers', ['ngResource', 'ui.bootstrap']);
+  window.NgApp = angular.module('NgBallers', ['ngResource', 'ui.bootstrap', 'ui.highlight', 'ngSanitize']);
 
   NgApp.config([
     '$httpProvider', function($httpProvider) {

@@ -24,8 +24,8 @@
       <tbody>
         <tr ng-repeat="player in players | filter:playerFilter | orderBy:predicate:reverse"
             ng-click="go('<%= ballers_path %>/' + player.id)">
-          <td>{{player.first_name}}</td>
-          <td>{{player.last_name}}</td>
+          <td ng-bind-html="player.first_name | highlight:playerFilter"></td>
+          <td ng-bind-html="player.last_name | highlight:playerFilter"></td>
           <td>[Details/Edit on Click]</td>
         </tr>
       </tbody>
