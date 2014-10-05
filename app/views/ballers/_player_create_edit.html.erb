@@ -1,4 +1,9 @@
 <form role="form" class="col-sm-6" id="player-form">
+  <div image-drop style="width: 200px; min-height: 250px;" class="thumbnail">
+    <img ng-model="player.picture" ng-src={{file}} style="width: 200px;"/>
+    <span class="file-name">{{fileName}}</span>
+  </div>
+
   <div class="form-group">
     <label for="first_name">First Name</label>
     <input class="form-control" name="first_name" ng-model="player.first_name" ng-required="true" />

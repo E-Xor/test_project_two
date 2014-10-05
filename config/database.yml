@@ -3,7 +3,7 @@ development: &development
 #  pool: 5
   adapter: mysql2
   encoding: utf8
-  database: test_project_two_dev
+  database: tp2_dev
   username: root
   #passowrd: 
   host: 127.0.0.1
@@ -11,7 +11,7 @@ development: &development
 
 test:
   <<: *development
-  database: test_project_two_test
+  database: tp2_test
 
 production:
   adapter: postgresql

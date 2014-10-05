@@ -13,8 +13,6 @@ class FrogsController < ApplicationController
   end
 
   def create
-    sleep 3 # To demonstra a throbber
-
     begin
       frog = Frog.create!(params[:frog])
 
@@ -27,8 +25,6 @@ class FrogsController < ApplicationController
   end
 
   def update
-    sleep 3 # To demonstra a throbber
-
     begin
       frog = Frog.find(params[:id])
       frog.update_attributes!(params[:frog])

@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(:version => 20140113113502) do
 
   create_table "ball_players", :force => true do |t|
-    t.string   "first_name",               :null => false
-    t.string   "last_name",                :null => false
-    t.string   "position",    :limit => 1, :null => false
-    t.date     "born",                     :null => false
-    t.integer  "height",                   :null => false
-    t.integer  "weight",                   :null => false
-    t.integer  "rookie_year",              :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "position",    :limit => 1
+    t.date     "born"
+    t.integer  "height"
+    t.integer  "weight"
+    t.integer  "rookie_year"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end

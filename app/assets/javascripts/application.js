@@ -28,7 +28,9 @@
 //=require angular/services/go
 //=require angular/services/get_id
 //=require angular/controllers/ballers_ctrl
+//=require angular/directives/image_drop
 //=require angular/controllers/baller_ctrl
+
 
 //=require three/cube
 

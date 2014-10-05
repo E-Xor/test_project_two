@@ -2,38 +2,45 @@
 
   window.NgApp = angular.module('NgBallers', ['ngResource', 'ui.bootstrap', 'ui.highlight', 'ngSanitize']);
 
-  NgApp.config([
-    '$httpProvider', function($httpProvider) {
+  NgApp.config(['$httpProvider', function($httpProvider) {
       $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
       $httpProvider.interceptors.push(['$q', '$rootScope', '$interval', function($q, $rootScope, $interval) {
+
+        function startBar(){
+          console.log('startBar');
+          $rootScope.barValue = 10;
+          $rootScope.barInterval = $interval(function(){$rootScope.barValue += 3}, 20, 28);
+        };
+
+        function stopBar(){
+                    console.log('stopBar');
+          $rootScope.barValue = 0;
+        };
+
         return {
           request: function (data) {
             if(data.method != 'GET') {
-              $rootScope.barValue = 3;
-              $rootScope.barInterval = $interval(function(){$rootScope.barValue += 3}, 100, 30);
+              startBar();
             }
 
             return data;
           },
 
           requestError: function (rejection) {
-            $interval.cancel($rootScope.barInterval);
-            $rootScope.barValue = 0;
+            stopBar();
 
             return $q.reject(rejection);
           },
 
           response: function (data) {
-            $interval.cancel($rootScope.barInterval);
-            $rootScope.barValue = 0;
+            stopBar();
 
             return data;
           },
 
           responseError: function (rejection) {
-            $interval.cancel($rootScope.barInterval);
-            $rootScope.barValue = 0;
+            stopBar();
 
             return $q.reject(rejection);
           }

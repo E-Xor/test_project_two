@@ -23,7 +23,7 @@ class Api::BallersController < ApplicationController
   end
 
   def create
-    sleep 5
+    sleep 1
     create_params = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
     b = BallPlayer.create!(create_params)
     flash[:saved] = true
@@ -39,7 +39,7 @@ class Api::BallersController < ApplicationController
   end
 
   def update
-    sleep 5
+    sleep 1
     b = BallPlayer.find(params[:id])
     attributes_for_update = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
     b.update_attributes!(attributes_for_update)
