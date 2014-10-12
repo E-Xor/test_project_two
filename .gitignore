@@ -20,5 +20,6 @@
 /solr
 
 # Pictures
-# /public/pictures
+/public/pictures/*
+
 
