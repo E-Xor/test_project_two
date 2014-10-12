@@ -61,6 +61,7 @@
       };
 
       $scope.updatePlayer = function () {
+        $scope.player.picture     = $scope.file;
         if(typeof $scope.player.born != "string") {
           // Avoid possible date change
           // Use UTC noon, not browser local time

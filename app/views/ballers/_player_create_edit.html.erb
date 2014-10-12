@@ -1,6 +1,7 @@
 <form role="form" class="col-sm-6" id="player-form">
   <div image-drop style="width: 200px; min-height: 250px;" class="thumbnail">
     <img ng-model="player.picture" ng-src={{file}} style="width: 200px;"/>
+    <img ng-model="player.picture" ng-src="/pictures/{{player.picture}}" style="width: 200px;"/>
     <span class="file-name">{{fileName}}</span>
   </div>
 

@@ -41,7 +41,17 @@ class Api::BallersController < ApplicationController
   def update
     sleep 1
     b = BallPlayer.find(params[:id])
+
+    (prefix, base64picture) = params[:picture].split(',') # value looks like "data:image/png;base64,iVBORw0KGgoAAAANS...YruxybJ1Z/9k="
+    file_ext = prefix.split(';').first.split('/').last
+    file_name = params[:id] + '.' + file_ext
+    Rails.logger.debug "about to save to: #{Rails.root}/public/pictures/#{file_name}"
+    File.open("#{Rails.root}/public/pictures/#{file_name}", 'wb') do |f|
+        f.write(Base64.decode64(base64picture))
+    end
+
     attributes_for_update = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
+    attributes_for_update.merge!(picture: file_name) if file_name
     b.update_attributes!(attributes_for_update)
     flash[:saved] = true
     render json: {updated: 'ok', ball_player: b}.to_json

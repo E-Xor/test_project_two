@@ -16,6 +16,8 @@
           element.on('drop', function(e){ 
             e.preventDefault();
             var file = e.originalEvent.dataTransfer.files[0];
+            console.log(file);
+            scope.fileName = file.name;
 
             var reader = new FileReader();
             reader.onload = function(evt) {
@@ -51,8 +53,6 @@
                 }
 
                 scope.file = resized_file;
-
-                return scope.fileName = file.name;
               });
             
             };
