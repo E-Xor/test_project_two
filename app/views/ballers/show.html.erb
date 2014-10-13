@@ -1,8 +1,6 @@
 <div ng-app="NgBallers">
   <div ng-controller="BallerCtrl">
-    <img src="/pictures/{{player.picture}}" alt="Player picture" />
     <pre>
-      [Picture] {{player.picture}}
       Fisrt Name: {{player.first_name}}
       Last Name: {{player.last_name}}
       Position: {{player.position_full}}
@@ -11,7 +9,7 @@
       Weight: {{player.weight}}
     </pre>
 
-      <%= render 'player_create_edit' %>
+    <%= render 'player_create_edit' %>
   
   </div>
 </div>

@@ -11,6 +11,11 @@
       if(/^\d+$/.test($scope.playerId) ) {
         $scope.player = BallersResource.get({id: $scope.playerId}, function () {
           $scope.originalPlayer = angular.copy($scope.player);
+          if(typeof($scope.player.picture) == 'string' && $scope.player.picture.length > 0) {
+            var $playerPictureCurrent = angular.element('#player-picture-current');
+            $playerPictureCurrent.attr("src", "/pictures/" + $scope.player.picture);
+            $playerPictureCurrent.show();
+          }
         });
       }
       else {

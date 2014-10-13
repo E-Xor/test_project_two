@@ -51,3 +51,18 @@ img#sortIndicator {
 .ui-match {
   background: #ffff00;
 }
+
+#image-drop {
+  width: 200px;
+  min-height: 250px;
+  margin-bottom: 5px;
+}
+
+#player-picture-current, #player-picture-new {
+  display: none;
+  width: 200px;
+}
+
+#player-picture-loading {
+  display: none;
+}

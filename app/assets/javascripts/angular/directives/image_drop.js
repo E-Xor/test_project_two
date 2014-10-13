@@ -15,8 +15,12 @@
 
           element.on('drop', function(e){ 
             e.preventDefault();
+
+            angular.element('#player-picture-current').hide();
+            var $playerPictureNew = angular.element('#player-picture-new')
+            angular.element('#player-picture-new').show();
+
             var file = e.originalEvent.dataTransfer.files[0];
-            console.log(file);
             scope.fileName = file.name;
 
             var reader = new FileReader();
@@ -53,6 +57,7 @@
                 }
 
                 scope.file = resized_file;
+                $playerPictureNew.attr('alt', 'New player picture');
               });
             
             };
