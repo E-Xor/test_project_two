@@ -66,13 +66,13 @@
       };
 
       $scope.updatePlayer = function () {
-        $scope.player.picture     = $scope.file;
+        $scope.player.picture = $scope.file;
+
         if(typeof $scope.player.born != "string") {
           // Avoid possible date change
           // Use UTC noon, not browser local time
           var d = $scope.player.born;
           $scope.player.born = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 12, 0, 0));
-          console.log($scope.player.born);
         }
 
         angular.element("#player-form").addClass("loading");
@@ -99,6 +99,8 @@
 
       $scope.createPlayer = function () {
         angular.element("#player-form").addClass("loading");
+
+        $scope.player.picture     = $scope.file;
 
         $scope.player.$save(
           function(data){
