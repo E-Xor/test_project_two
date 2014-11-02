@@ -1,5 +1,5 @@
 class BallPlayer < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :position, :born, :height, :weight, :rookie_year, :picture
+  attr_accessible :first_name, :last_name, :position, :born, :height, :weight, :rookie_year, :picture, :picture_bin
 
   validates :first_name, :last_name, presence: true # , :position, :born, :height, :weight, :rookie_year, presence: true
   # validates :position, inclusion: {in: %w[F G C], message: 'must be a Forward(F), Guard(G) or Center(C)'}

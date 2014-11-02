@@ -20,15 +20,16 @@ class Api::BallersController < ApplicationController
     when 'F-C'
       position_full = "Forward/Center"
     end
-    render json: bp.attributes.merge!(position_full: position_full)
+    render json: bp.attributes.merge!(position_full: position_full, picture: bp.picture_bin)
   end
 
   def create
     sleep 1
 
-    file_name = save_picture(params[:picture])
+    # file_name = save_picture(params[:picture])
     create_params = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
-    create_params.merge!(picture: file_name) if file_name
+    # create_params.merge!(picture: file_name) if file_name
+    create_params.merge!(picture_bin: params[:picture])
 
     b = BallPlayer.create!(create_params)
 
@@ -49,12 +50,13 @@ class Api::BallersController < ApplicationController
     sleep 1
 
     b = BallPlayer.find(params[:id])
-    file_name = save_picture(params[:picture])
+    # file_name = save_picture(params[:picture])
     attributes_for_update = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
-    if file_name
-      File.delete("#{PICTURE_FOLDER}/#{b.picture}") if b.picture.present?
-      attributes_for_update.merge!(picture: file_name)
-    end
+    attributes_for_update.merge!(picture_bin: params[:picture])
+    # if file_name
+    #   File.delete("#{PICTURE_FOLDER}/#{b.picture}") if b.picture.present?
+    #   attributes_for_update.merge!(picture: file_name)
+    # end
 
     b.update_attributes!(attributes_for_update)
 
@@ -86,7 +88,7 @@ class Api::BallersController < ApplicationController
     file_name = Time.now.to_i.to_s + '.' + file_ext
     Rails.logger.debug "about to save to: #{Rails.root}/public/pictures/#{file_name}"
     File.open("#{PICTURE_FOLDER}/#{file_name}", 'wb') do |f|
-        f.write(Base64.decode64(base64picture))
+      f.write(Base64.decode64(base64picture))
     end
 
     return file_name

@@ -13,7 +13,9 @@
           $scope.originalPlayer = angular.copy($scope.player);
           if(typeof($scope.player.picture) == 'string' && $scope.player.picture.length > 0) {
             var $playerPictureCurrent = angular.element('#player-picture-current');
-            $playerPictureCurrent.attr("src", "/pictures/" + $scope.player.picture);
+            // $playerPictureCurrent.attr("src", "/pictures/" + $scope.player.picture_bin);
+            console.log(' $scope.player.picture_bin)', $scope.player.picture);
+            $playerPictureCurrent.attr("src", $scope.player.picture_bin);
             $playerPictureCurrent.show();
           }
         });

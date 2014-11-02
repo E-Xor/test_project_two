@@ -10,11 +10,11 @@
         function startBar(){
           console.log('startBar');
           $rootScope.barValue = 10;
-          $rootScope.barInterval = $interval(function(){$rootScope.barValue += 3}, 20, 28);
+          $rootScope.barInterval = $interval(function(){$rootScope.barValue += 3; console.log('barValue', $rootScope.barValue)}, 20, 28);
         };
 
         function stopBar(){
-                    console.log('stopBar');
+          console.log('stopBar');
           $rootScope.barValue = 0;
         };
 
