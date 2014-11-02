@@ -14,7 +14,6 @@
           if(typeof($scope.player.picture) == 'string' && $scope.player.picture.length > 0) {
             var $playerPictureCurrent = angular.element('#player-picture-current');
             // $playerPictureCurrent.attr("src", "/pictures/" + $scope.player.picture_bin);
-            console.log(' $scope.player.picture_bin)', $scope.player.picture);
             $playerPictureCurrent.attr("src", $scope.player.picture_bin);
             $playerPictureCurrent.show();
           }
@@ -77,17 +76,11 @@
           $scope.player.born = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 12, 0, 0));
         }
 
-        angular.element("#player-form").addClass("loading");
-
         $scope.player.$update(
           function(){
-            angular.element("#player-form").removeClass("loading");
-
             Go.go('/ballers/' + $scope.playerId);
           },
           function(){
-            angular.element("#player-form").removeClass("loading");
-
             var messageFromBackend = '';
             if(error.data && error.data.error) { messageFromBackend = error.data.error }
             ModalWindow.show('Error Saving','Error happened updating the player. Please try again later. ' + messageFromBackend);
@@ -100,19 +93,13 @@
       };
 
       $scope.createPlayer = function () {
-        angular.element("#player-form").addClass("loading");
-
         $scope.player.picture     = $scope.file;
 
         $scope.player.$save(
           function(data){
-            angular.element("#player-form").removeClass("loading");
-
             Go.go('/ballers/' + data.id);
           },
           function(error){
-            angular.element("#player-form").removeClass("loading");
-
             var messageFromBackend = '';
             if(error.data && error.data.error) { messageFromBackend = error.data.error }
             ModalWindow.show('Error Saving','Error happened saving the player. Please try again later. ' + messageFromBackend);
@@ -125,7 +112,6 @@
         .then(function(result){
           $scope.player.$delete(
             function(){
-              console.log('Deleted!');
               Go.go('/ballers');
             },
             function(){

@@ -13,6 +13,8 @@ class FrogsController < ApplicationController
   end
 
   def create
+    sleep 1
+
     begin
       frog = Frog.create!(params[:frog])
 
@@ -25,6 +27,8 @@ class FrogsController < ApplicationController
   end
 
   def update
+    sleep 1
+
     begin
       frog = Frog.find(params[:id])
       frog.update_attributes!(params[:frog])

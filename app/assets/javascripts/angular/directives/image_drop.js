@@ -21,7 +21,6 @@
             angular.element('#player-picture-new').show();
 
             var file = e.originalEvent.dataTransfer.files[0];
-            scope.fileName = file.name;
 
             var reader = new FileReader();
             reader.onload = function(evt) {

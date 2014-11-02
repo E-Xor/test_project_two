@@ -3,7 +3,6 @@
     <div image-drop id="image-drop" class="thumbnail">
       <img id="player-picture-new" ng-model="player.picture" ng-src={{file}} alt="Loading..."/>
       <img id="player-picture-current" alt="Current player picture" />
-      <span>{{fileName}}</span>
     </div>
     <span id="player-picture-hint">To replace or add a picture drag it to the box above.</span>
   </div>
@@ -42,4 +41,4 @@
 </form>
 
 <%= render 'modal_window' %>
-<progressbar value="barValue" class="progress-striped active progress-bar"></progressbar>
+<progressbar value="barValue" class="progress-striped active my-progress-bar"></progressbar>
