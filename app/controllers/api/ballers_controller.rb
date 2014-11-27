@@ -2,7 +2,7 @@ class Api::BallersController < ApplicationController
   PICTURE_FOLDER = "public/pictures"
 
   def index
-    render json: BallPlayer.order(:first_name).all
+    render json: BallPlayer.order(:first_name).all.map{|p| p.attributes.slice('first_name', 'last_name', 'id')}
   end
 
   def show
