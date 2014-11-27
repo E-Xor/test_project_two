@@ -75,4 +75,19 @@ img#sortIndicator {
 
 #player-form {
   padding-bottom: 20px;
+
+  input.ng-invalid.ng-dirty {
+    border-color: #fa787e;
+    border-width: 2px;
+  }
+
+  input.ng-valid.ng-dirty {
+    border-color: #78fa89;
+    border-width: 1px;
+  }
+
+  .required {
+    color: #fa787e;
+  }
+
 }

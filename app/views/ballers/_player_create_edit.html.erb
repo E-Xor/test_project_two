@@ -1,4 +1,4 @@
-<form role="form" class="col-sm-6" id="player-form">
+<form role="form" class="col-sm-6" id="player-form" name="playerForm" novalidate >
   <div class="form-group">
     <div image-drop id="image-drop" class="thumbnail">
       <img id="player-picture-new" ng-model="player.picture" ng-src={{file}} alt="Loading..."/>
@@ -9,27 +9,36 @@
 
   <div class="form-group">
     <label for="first_name">First Name</label>
-    <input class="form-control" name="first_name" ng-model="player.first_name" ng-required="true" />
+    <input type="text" class="form-control" name="first_name" ng-model="player.first_name" required ng-minlength=2 />
+    <div ng-show="playerForm.first_name.$dirty && playerForm.first_name.$invalid">
+      <small ng-show="playerForm.first_name.$error.required || playerForm.first_name.$error.minlength" class="required">Required</small>
+    </div>
   </div>
   <div class="form-group">
     <label for="last_name">Last Name</label>
-    <input class="form-control" name="last_name" ng-model="player.last_name" ng-required="true" />
+    <input class="form-control" name="last_name" ng-model="player.last_name" required ng-minlength=2 />
+    <div ng-show="playerForm.last_name.$dirty && playerForm.last_name.$invalid">
+      <small ng-show="playerForm.last_name.$error.required || playerForm.last_name.$error.minlength" class="required">Required</small>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="born">Date of Birth</label>
     <div class="input-group">
-      <input type="text" class="form-control" name="born" datepicker-popup="dd-MMMM-yyyy" ng-model="player.born" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" min-date="minDate" max-date="maxDate" show-button-bar="false"/>
+      <input type="text" class="form-control" name="born" datepicker-popup="dd-MMMM-yyyy" ng-model="player.born" is-open="opened" datepicker-options="dateOptions" required close-text="Close" min-date="minDate" max-date="maxDate" show-button-bar="false"/>
       <span class="input-group-btn">
         <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
     </div>
+    <div ng-show="playerForm.born.$dirty && playerForm.born.$invalid">
+      <small ng-show="playerForm.born.$error.required || playerForm.born.$error.date" class="required">Required</small>
+    </div>
   </div>
 
   <% if controller.request.params[:action] == 'new' %>
-    <button ng-click="createPlayer()" class="btn btn-primary">Create Player</button>
+    <button ng-click="createPlayer()" class="btn btn-primary" ng-disabled="playerForm.$invalid">Create Player</button>
   <% else %>
-    <button ng-click="updatePlayer()" class="btn btn-primary">Update Player</button>
+    <button ng-click="updatePlayer()" class="btn btn-primary" ng-disabled="playerForm.$invalid">Update Player</button>
     <button ng-click="deletePlayer()" class="col-sm-offset-1 btn btn-danger">Delete Player</button>
     <% if flash[:saved] %>
       <div class="saved-blink">

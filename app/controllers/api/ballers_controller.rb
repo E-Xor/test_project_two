@@ -52,7 +52,7 @@ class Api::BallersController < ApplicationController
     b = BallPlayer.find(params[:id])
     # file_name = save_picture(params[:picture])
     attributes_for_update = params.slice(:first_name, :last_name, :position, :born, :height, :weight, :rookie_year)
-    attributes_for_update.merge!(picture_bin: params[:picture])
+    attributes_for_update.merge!(picture_bin: params[:picture]) if params[:picture].present?
     # if file_name
     #   File.delete("#{PICTURE_FOLDER}/#{b.picture}") if b.picture.present?
     #   attributes_for_update.merge!(picture: file_name)
